@@ -4,21 +4,19 @@ import 'normalize.css';
 import '../assets/css/app.css';
 
 import React from 'react';
-import { Link, RouteHandler } from 'react-router';
+import { RouteHandler } from 'react-router';
+import Navbar from 'components/navbar';
+import BackgroundBox from 'components/background-box';
 
 export default React.createClass({
   render() {
     return (
       <div>
-        <nav className="navbar">
-          <span className="title">App</span>
-          <span className="nav-links">
-            <Link to="index">Index</Link>
-            <Link to="about">About</Link>
-          </span>
-        </nav>
+        <Navbar />
+        <BackgroundBox>
+        </BackgroundBox>
         <div className="content">
-          <RouteHandler/>
+          <RouteHandler />
         </div>
       </div>
     );

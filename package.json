@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "jquery": "^2.1.4",
+    "rainyday.js": "git://github.com/maroslaw/rainyday.js.git",
     "normalize.css": "~3.0.3",
     "react": "0.13.x",
     "react-router": "^0.13.x",

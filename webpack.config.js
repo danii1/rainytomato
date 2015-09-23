@@ -32,6 +32,7 @@ module.exports = {
     alias: {
       'jquery': __dirname + '/node_modules/jquery/dist/jquery.js',
       'styles': __dirname + '/src/assets/css',
+      'images': __dirname + '/src/assets/images',
       'mixins': __dirname + '/src/mixins',
       'components': __dirname + '/src/components/',
       'routes': __dirname + '/src/routes/',
