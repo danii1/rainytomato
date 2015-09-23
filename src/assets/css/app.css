@@ -2,8 +2,9 @@
 
 $background-color: #222;
 $border-color: #ccc;
-$default-padding: 1em;
-$navbar-height: 3em;
+$default-padding: 1rem;
+$navbar-height: 4rem;
+$navbar-font-size: 2rem;
 $text-color: #fff;
 $blur-radius: 3px;
 
@@ -16,6 +17,7 @@ $blur-radius: 3px;
 html, body {
   background: $background-color;
   color: $text-color;
+  font-family: 'Fira Sans', sans-serif;
 }
 
 html, body, #react, #react > div {
@@ -28,31 +30,41 @@ a, a:hover, a:visited, a:active {
   text-decoration: none;
 }
 
+h1 { font-size: 3.0rem; line-height: 1.2;  letter-spacing: -.1rem;}
+h2 { font-size: 2.6rem; line-height: 1.25; letter-spacing: -.1rem; }
+h3 { font-size: 2.3rem; line-height: 1.3;  letter-spacing: -.1rem; }
+h4 { font-size: 2.0rem; line-height: 1.35; letter-spacing: -.08rem; }
+h5 { font-size: 1.7rem; line-height: 1.5;  letter-spacing: -.05rem; }
+h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
+
 /* content */
-
-.navbar, .content {
-  z-index: 1;
-}
-
-.background-box {
-  filter: blur($blur-radius);
-  width: 100%;
-  height: 100%;
-}
 
 .content {
   position: fixed;
-  top: $navbar-height;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  padding: $default-padding;
 
   img {
     width: 100%;
     height: 100%;
   }
 }
+
+.timer-route {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.about-route {
+  padding: $default-padding;
+}
+
+/* components */
 
 .navbar {
   position: fixed;
@@ -61,12 +73,15 @@ a, a:hover, a:visited, a:active {
   width: 100%;
   height: $navbar-height;
   padding: $default-padding;
+  z-index: 2;
 
   .title {
-    font-weight: bold;
+    font-size: $navbar-font-size;
   }
 
   .nav-links {
+    font-size: $navbar-font-size - 0.5rem;
+    line-height: $navbar-font-size;
     float:right;
 
     a {
@@ -78,4 +93,81 @@ a, a:hover, a:visited, a:active {
     }
 
   }
+}
+
+.background-box {
+  /* filter: blur($blur-radius); */
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes load {
+  0%
+  {
+    stroke-dashoffset:0
+  }
+}
+
+.pomodoro-timer {
+  width: 300px;
+  height: 300px;
+  margin: auto;
+
+  .progress {
+    margin: 0;
+    padding: 0;
+  }
+
+  .progress>li {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    color: #93A2AC;
+    font-weight: 100;
+  }
+
+  /*
+  .progress>li:before {
+    content: attr(data-name);
+    position: absolute;
+    width: 100%;
+    bottom: -2rem;
+    font-weight: 400;
+  }
+  */
+
+  .progress>li:after {
+    content: attr(data-percent);
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    font-size: 2rem;
+    margin-top: -1rem;
+    text-align: center;
+  }
+
+  .progress svg {
+    width: 300px;
+    height: 300px;
+  }
+
+  .progress svg:nth-child(2) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+  }
+
+  .progress svg:nth-child(2) path {
+    fill: none;
+    stroke-width: 10;
+    stroke-dasharray: 629;
+    stroke: rgba(255, 255, 255, 0.9);
+    animation: load 10s;
+  }
+
 }

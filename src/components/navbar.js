@@ -7,7 +7,7 @@ class Navbar extends React.Component {
       <nav className="navbar">
         <span className="title">Rainy Tomato</span>
         <span className="nav-links">
-          <Link to="index">Index</Link>
+          <Link to="timer">Timer</Link>
           <Link to="about">About</Link>
         </span>
       </nav>
