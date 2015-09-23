@@ -122,7 +122,6 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
     display: inline-block;
     position: relative;
     text-align: center;
-    color: #93A2AC;
     font-weight: 100;
   }
 
@@ -167,7 +166,6 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
     stroke-width: 10;
     stroke-dasharray: 629;
     stroke: rgba(255, 255, 255, 0.9);
-    animation: load 10s;
   }
 
 }
