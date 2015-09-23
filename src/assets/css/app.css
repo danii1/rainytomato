@@ -1,0 +1,51 @@
+/* variables */
+
+$background-color: #fff;
+$border-color: #ccc;
+$default-padding: 1em;
+$navbar-height: 3em;
+
+/* base */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  background: $background-color;
+}
+
+/* content */
+
+.content {
+  background: $background-color;
+  margin-top: 3em;
+  padding: $default-padding;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $navbar-height;
+  padding: $default-padding;
+  border-bottom: 1px solid $border-color;
+
+  .title {
+    font-weight: bold;
+  }
+
+  .nav-links {
+    float:right;
+
+    a {
+      padding: 0 $default-padding;
+    }
+
+    a.active {
+      font-weight: bold;
+    }
+
+  }
+}
