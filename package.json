@@ -18,6 +18,7 @@
     "launch": "(sleep 1 && npm run browser) & npm run server",
     "clean": "rm -rf ./dist",
     "build": "rm -rf ./dist && ./node_modules/.bin/webpack --config webpack.dist.config.js",
+    "build:firefox": "npm run build && cp ./src/assets/root/manifest.webapp ./dist/",
     "deploy": "rm -rf ./dist && npm run build && node ./publish.js"
   },
   "homepage": "https://github.com/danii1/rainytomato",
@@ -38,6 +39,7 @@
     "normalize.css": "~3.0.3",
     "rainyday.js": "git://github.com/maroslaw/rainyday.js.git",
     "react": "0.13.x",
+    "react-fa": "^4.0.0",
     "react-router": "^0.13.x",
     "reflux": "^0.2.7"
   },
