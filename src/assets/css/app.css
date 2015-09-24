@@ -101,71 +101,21 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
   height: 100%;
 }
 
-@keyframes load {
-  0%
-  {
-    stroke-dashoffset:0
-  }
-}
-
 .pomodoro-timer {
+  position: relative;
   width: 300px;
   height: 300px;
   margin: auto;
+  color: tomato;
 
-  .progress {
-    margin: 0;
-    padding: 0;
-  }
-
-  .progress>li {
-    display: inline-block;
-    position: relative;
-    text-align: center;
-    font-weight: 100;
-  }
-
-  /*
-  .progress>li:before {
-    content: attr(data-name);
+  .progressbar-text {
     position: absolute;
-    width: 100%;
-    bottom: -2rem;
-    font-weight: 400;
-  }
-  */
-
-  .progress>li:after {
-    content: attr(data-percent);
-    position: absolute;
-    width: 100%;
+    left: 50%;
     top: 50%;
-    left: 0;
-    font-size: 2rem;
-    margin-top: -1rem;
-    text-align: center;
-  }
-
-  .progress svg {
-    width: 300px;
-    height: 300px;
-  }
-
-  .progress svg:nth-child(2) {
-    position: absolute;
-    left: 0;
-    top: 0;
-    transform: rotate(-90deg);
-    -webkit-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
-  }
-
-  .progress svg:nth-child(2) path {
-    fill: none;
-    stroke-width: 10;
-    stroke-dasharray: 629;
-    stroke: rgba(255, 255, 255, 0.9);
+    padding: 0px;
+    margin: 0px;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
   }
 
 }

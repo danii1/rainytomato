@@ -51,6 +51,9 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'react-hot!babel-loader'
     }, {
+      test: /progressbar.js\/.*\.(js|jsx)$/,
+      loader: 'babel-loader'
+    }, {
       test: /\.css$/,
       loader: 'style-loader!css-loader!postcss-loader'
     }, {
