@@ -6,8 +6,6 @@ import bg3 from 'images/background/bg3.jpg';
 import bg4 from 'images/background/bg4.jpg';
 import bg5 from 'images/background/bg5.jpg';
 import bg6 from 'images/background/bg6.jpg';
-import bg7 from 'images/background/bg7.jpg';
-import bg8 from 'images/background/bg8.jpg';
 
 class BackgroundBox extends React.Component {
   constructor(props) {
@@ -15,7 +13,7 @@ class BackgroundBox extends React.Component {
   }
 
   static getRandomImageStyle() {
-    var images = [bg1, bg2, bg3, bg4, bg5, bg6, bg7, bg8];
+    var images = [bg1, bg2, bg3, bg4, bg5, bg6];
     var randomImage = images[Math.floor(Math.random() * images.length)];
     return {
       background: 'no-repeat center/cover url(' + randomImage + ')'
