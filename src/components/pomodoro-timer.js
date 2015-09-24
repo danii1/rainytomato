@@ -3,8 +3,10 @@ import React from 'react';
 class PomodoroTimer extends React.Component {
   constructor(props) {
     super(props);
+    var progressPercentage = Math.floor(Math.random() * 100);
     this.state = {
-      progressPersentage: Math.floor(Math.random() * 100)
+      progressPercentage: progressPercentage,
+      progressDash: Math.round(629 / 100 * progressPercentage)
     };
   }
 
@@ -12,7 +14,7 @@ class PomodoroTimer extends React.Component {
     return (
       <div className="pomodoro-timer">
         <ul className="progress">
-          <li data-name="Timer" data-percent={this.state.progressPersentage}>
+          <li data-name="Timer" data-percent={this.state.progressPercentage}>
             <svg viewBox="-10 -10 220 220">
               <g fill="none" strokeWidth="10" transform="translate(100,100)">
                 <path d="M 0,-100 A 100,100 0 0,1 86.6,-50" stroke="url(#cl1)"/>
@@ -24,7 +26,7 @@ class PomodoroTimer extends React.Component {
               </g>
             </svg>
             <svg viewBox="-10 -10 220 220">
-              <path style={{strokeDashoffset: 81}} d="M200,100 C200,44.771525 155.228475,0 100,0 C44.771525,0 0,44.771525 0,100 C0,155.228475 44.771525,200 100,200 C155.228475,200 200,155.228475 200,100 Z" stroke-dashoffset="81"></path>
+              <path style={{strokeDashoffset: this.state.progressDash}} d="M200,100 C200,44.771525 155.228475,0 100,0 C44.771525,0 0,44.771525 0,100 C0,155.228475 44.771525,200 100,200 C155.228475,200 200,155.228475 200,100 Z" stroke-dashoffset="81"></path>
             </svg>
           </li>
         </ul>
