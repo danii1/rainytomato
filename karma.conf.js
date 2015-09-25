@@ -54,6 +54,7 @@ module.exports = function (config) {
         alias: {
           'root': path.join(process.cwd(), './src/'),
           'styles': path.join(process.cwd(), './src/styles/'),
+          'images': path.join(process.cwd(), '/src/assets/images'),
           'components': path.join(process.cwd(), './src/components/'),
           'routes': path.join(process.cwd(), './src/routes/'),
           'stores': '../../../src/stores/',
