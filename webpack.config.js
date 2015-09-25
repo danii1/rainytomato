@@ -49,7 +49,7 @@ module.exports = {
     loaders: [{
       test: /\.(js|jsx)$/,
       exclude: /node_modules/,
-      loader: 'react-hot!babel-loader'
+      loader: 'react-hot!babel-loader?optional=es7.decorators&stage=2'
     }, {
       test: /\.css$/,
       loader: 'style-loader!css-loader!postcss-loader'
