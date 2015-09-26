@@ -13,9 +13,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: {
-    app: './src/app.js',
-  },
+  entry: ['./src/app.js', 'font-awesome-webpack!./font-awesome.config.js'],
   output: {
     publicPath: 'assets/',
     path: 'dist/assets/',
@@ -74,7 +72,7 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.NoErrorsPlugin(),
-    new webpack.optimize.CommonsChunkPlugin('app', 'app-[chunkhash].js'),
+    new webpack.optimize.CommonsChunkPlugin('main', 'main-[chunkhash].js', false),
     new HtmlWebpackPlugin({
       append: true,
       inject: 'body',
@@ -82,7 +80,7 @@ module.exports = {
       template: './src/assets/index.template.html',
       favicon: './src/assets/favicon.ico'
     }),
-    new ExtractTextPlugin("app-[chunkhash].css", {
+    new ExtractTextPlugin("main-[chunkhash].css", {
       publicPath: '/assets/',
       allChunks: true
     })

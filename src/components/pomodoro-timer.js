@@ -3,7 +3,6 @@ import React from 'react';
 import connectStores from 'alt/utils/connectToStores';
 import TimerStore from '../stores/timer-store';
 import TimerActions from '../actions/timer-actions';
-import Icon from 'react-fa';
 
 @connectStores
 class PomodoroTimer extends React.Component {
@@ -47,9 +46,9 @@ class PomodoroTimer extends React.Component {
 
     let button;
     if (this.props.status === 'running') {
-      button = <Icon name="stop" />;
+      button = <i className="fa fa-stop"></i>;
     } else {
-      button = <Icon name="play" />;
+      button = <i className="fa fa-play"></i>;
     }
 
     return (

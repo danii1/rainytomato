@@ -12,7 +12,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: ['./src/app.js', 'webpack/hot/only-dev-server'],
+  entry: ['./src/app.js', 'webpack/hot/only-dev-server', 'font-awesome-webpack!./font-awesome.config.js'],
   output: {
     publicPath: '/',
     filename: 'app.js'
@@ -70,7 +70,11 @@ module.exports = {
       template: './src/assets/index.template.html',
       favicon: './src/assets/favicon.ico'
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new ExtractTextPlugin("main.css", {
+      publicPath: '/assets/',
+      allChunks: true
+    })
   ]
 
 };
