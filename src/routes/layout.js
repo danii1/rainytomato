@@ -7,6 +7,7 @@ import React from 'react';
 import { RouteHandler } from 'react-router';
 import Navbar from 'components/navbar';
 import BackgroundBox from 'components/background-box';
+import TaskWatcher from 'components/task-watcher';
 
 export default React.createClass({
   render() {
@@ -18,6 +19,7 @@ export default React.createClass({
         <div className="content">
           <RouteHandler />
         </div>
+        <TaskWatcher />
       </div>
     );
   }

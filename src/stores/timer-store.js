@@ -1,10 +1,11 @@
 var alt = require('../alt');
 import TimerActions from '../actions/timer-actions';
 import DateUtils from '../helpers/date-utils';
-import { TaskStatus, TaskType, TaskInterval } from '../helpers/tasks';
+import { TaskStatus, TaskType, TaskInterval, TaskQueueBuilder } from '../helpers/tasks';
 
-class LocationStore {
+class TimerStore {
   constructor() {
+    this._taskQueue = TaskQueueBuilder.build(4);
     this.timeLeft = TaskInterval.WORK;
     this.status = TaskStatus.STOPPED;
     this.bindActions(TimerActions);
@@ -60,4 +61,4 @@ class LocationStore {
 
 }
 
-export default alt.createStore(LocationStore, 'LocationStore');
+export default alt.createStore(TimerStore, 'TimerStore');

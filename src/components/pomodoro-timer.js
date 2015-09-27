@@ -6,16 +6,6 @@ import TimerActions from '../actions/timer-actions';
 
 @connectStores
 class PomodoroTimer extends React.Component {
-  componentDidMount() {
-    this.interval = setInterval( () => {
-      TimerActions.checkTimer();
-    }, 1000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
-
   static getStores() {
     return [TimerStore];
   }
