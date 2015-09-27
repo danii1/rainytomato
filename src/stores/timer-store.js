@@ -1,5 +1,6 @@
 var alt = require('../alt');
-var TimerActions = require('../actions/timer-actions');
+import TimerActions from '../actions/timer-actions';
+import DateUtils from '../helpers/date-utils';
 import { TaskStatus, TaskType, TaskInterval } from '../helpers/tasks';
 
 class LocationStore {
@@ -11,17 +12,16 @@ class LocationStore {
 
   onStartTimer(taskType) {
     let stopTime;
-    let currentTime = new Date();
 
     switch (taskType) {
       case TaskType.WORK:
-        stopTime = new Date(currentTime.getTime() + TaskInterval.WORK);
+        stopTime = DateUtils.getDateInFuture(TaskInterval.WORK);
         break;
       case TaskType.SHORT_BREAK:
-        stopTime = new Date(currentTime.getTime() + TaskInterval.SHORT_BREAK);
+        stopTime = DateUtils.getDateInFuture(TaskInterval.SHORT_BREAK);
         break;
       case taskType.LONG_BREAK:
-        stopTime = new Date(currentTime.getTime() + TaskInterval.LONG_BREAK);
+        stopTime = DateUtils.getDateInFuture(TaskInterval.LONG_BREAK);
         break;
       default:
         break;
@@ -30,9 +30,9 @@ class LocationStore {
     this.setState({
       status: TaskStatus.RUNNING,
       taskType: taskType,
-      startTime: currentTime,
+      startTime: new Date(),
       stopTime: stopTime,
-      timeLeft: stopTime - currentTime
+      timeLeft: stopTime - new Date()
     });
     console.log('timer started', this);
   }

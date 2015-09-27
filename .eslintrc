@@ -18,6 +18,7 @@
     "global-strict": true,
     "no-extra-semi": 1,
     "no-underscore-dangle": false,
-    "no-console": false
+    "no-console": false,
+    "no-trailing-spaces": false
   }
 }
