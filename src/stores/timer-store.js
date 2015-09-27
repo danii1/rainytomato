@@ -35,7 +35,7 @@ class TimerStore {
       stopTime: stopTime,
       timeLeft: stopTime - new Date()
     });
-    console.log('timer started', this);
+    //console.log('timer started', this);
   }
 
   onStopTimer() {
@@ -46,7 +46,7 @@ class TimerStore {
       stopTime: null,
       timeLeft: TaskInterval.WORK
     });
-    console.log('timer stopped', this);
+    //console.log('timer stopped', this);
   }
 
   onCheckTimer() {
