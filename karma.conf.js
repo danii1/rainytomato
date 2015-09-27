@@ -12,6 +12,7 @@ module.exports = function (config) {
       'test/helpers/pack/**/*.js',
       'test/helpers/react/**/*.js',
       'test/spec/components/**/*.js',
+      'test/spec/helpers/**/*.js',
       'test/spec/stores/**/*.js',
       'test/spec/actions/**/*.js'
     ],
@@ -20,7 +21,8 @@ module.exports = function (config) {
       'test/spec/components/**/*.js': ['webpack'],
       'test/spec/components/**/*.jsx': ['webpack'],
       'test/spec/stores/**/*.js': ['webpack'],
-      'test/spec/actions/**/*.js': ['webpack']
+      'test/spec/actions/**/*.js': ['webpack'],
+      'test/spec/helpers/**/*.js': ['webpack']
     },
     webpack: {
       cache: true,
@@ -45,9 +47,10 @@ module.exports = function (config) {
           'images': path.join(process.cwd(), '/src/assets/images'),
           'components': path.join(process.cwd(), './src/components/'),
           'routes': path.join(process.cwd(), './src/routes/'),
+          'helpers': path.join(process.cwd(), './src/helpers/'),
           'stores': '../../../src/stores/',
           'actions': '../../../src/actions/',
-          'helpers': path.join(process.cwd(), './test/helpers/')
+          'test_helpers': path.join(process.cwd(), './test/helpers/')
         }
       }
     },

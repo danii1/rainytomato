@@ -1,5 +1,13 @@
 export default class StringFormatter {
   static getTimerDateString(time) {
+    if (typeof time !== 'number') {
+      throw new TypeError('Time parameter should be Date');
+    }
+
+    if (time >= 1 * 60 * 60 * 1000 || time < 0 || isNaN(time)) {
+      throw new RangeError('Time parameter should be within range of 0 to 1 hours');
+    }
+
     let mins = Math.floor(time / 1000 / 60).toString();
     let secs = Math.floor(time / 1000 % 60).toString();
     mins = mins.length === 2 ? mins : '0' + mins;
