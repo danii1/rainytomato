@@ -13,7 +13,7 @@
   "scripts": {
     "test": "./node_modules/karma/bin/karma start karma.conf.js --single-run",
     "test:watch": "./node_modules/karma/bin/karma start karma.conf.js --no-single-run --auto-watch",
-    "server": "./node_modules/.bin/webpack-dev-server --config webpack.config.js --hot --progress --colors --inline --content-base ./build",
+    "server": "./node_modules/.bin/webpack-dev-server --config webpack.config.js --progress --colors --inline --content-base ./build",
     "browser": "node ./openurl.js",
     "launch": "(sleep 1 && npm run browser) & npm run server",
     "clean": "rm -rf ./dist",
