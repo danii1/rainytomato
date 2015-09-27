@@ -9,4 +9,10 @@ const TaskType = {
   SHORT_BREAK: 'shortBreak'
 };
 
-export {TaskStatus, TaskType};
+const TaskInterval = {
+  WORK: 25 * 60 * 1000,
+  SHORT_BREAK: 5 * 60 * 1000,
+  LONG_BREAK: 15 * 60 * 1000
+};
+
+export {TaskStatus, TaskType, TaskInterval};
