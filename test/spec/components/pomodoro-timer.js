@@ -56,5 +56,6 @@ describe('PomodoroTimer', () => {
     TestUtils.Simulate.click(button);
     TestUtils.Simulate.click(button);
     expect(TimerActions.switchTimer).toHaveBeenCalled();
+    expect(TimerActions.switchTimer.calls.count()).toEqual(2);
   });
 });
