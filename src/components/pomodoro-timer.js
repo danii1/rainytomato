@@ -60,7 +60,7 @@ class PomodoroTimer extends React.Component {
         <p className="progressbar-text">
           {formattedDate}
         </p>
-        <a className="timer-control" onClick={() => this.handleClick()}>
+        <a href="#" className="timer-control" onClick={() => this.handleClick()}>
           {button}
         </a>
       </div>
