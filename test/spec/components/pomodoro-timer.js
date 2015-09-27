@@ -39,22 +39,22 @@ describe('PomodoroTimer', () => {
     expect(button.tagName).toEqual("A");
   });
 
-  it('should trigger start timer action when clicking on button', () => {
-    spyOn(TimerActions, 'startTimer');
+  it('should trigger switch timer action when clicking on button', () => {
+    spyOn(TimerActions, 'switchTimer');
 
     let element = TestUtils.renderIntoDocument(<PomodoroTimer/>);
     let button = TestUtils.findRenderedDOMComponentWithTag(element, 'a');
     TestUtils.Simulate.click(button);
-    expect(TimerActions.startTimer).toHaveBeenCalled();
+    expect(TimerActions.switchTimer).toHaveBeenCalled();
   });
 
-  it('should trigger stop timer action when clicking on button while timer is running', () => {
-    spyOn(TimerActions, 'stopTimer');
+  it('should trigger switch timer action when clicking on button while timer is running', () => {
+    spyOn(TimerActions, 'switchTimer');
 
     let element = TestUtils.renderIntoDocument(<PomodoroTimer/>);
     let button = TestUtils.findRenderedDOMComponentWithTag(element, 'a');
     TestUtils.Simulate.click(button);
     TestUtils.Simulate.click(button);
-    expect(TimerActions.stopTimer).toHaveBeenCalled();
+    expect(TimerActions.switchTimer).toHaveBeenCalled();
   });
 });

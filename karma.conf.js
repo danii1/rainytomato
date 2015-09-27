@@ -48,8 +48,8 @@ module.exports = function (config) {
           'components': path.join(process.cwd(), './src/components/'),
           'routes': path.join(process.cwd(), './src/routes/'),
           'helpers': path.join(process.cwd(), './src/helpers/'),
-          'stores': '../../../src/stores/',
-          'actions': '../../../src/actions/',
+          'stores':  path.join(process.cwd(), './src/stores/'),
+          'actions': path.join(process.cwd(), './src/actions/'),
           'test_helpers': path.join(process.cwd(), './test/helpers/')
         }
       }

@@ -8,13 +8,26 @@ class TimerStore {
     this._taskQueue = TaskQueueBuilder.build(4);
     this.timeLeft = TaskInterval.WORK;
     this.status = TaskStatus.STOPPED;
+    this.taskType = TaskType.WORK;
     this.bindActions(TimerActions);
   }
 
-  onStartTimer(taskType) {
+  onSwitchTimer() {
+    //let currentTaskStatus = this._taskQueue[0].status;
+    if (this.status === TaskStatus.RUNNING) {
+      this._stopTimer();
+    } else {
+      this._startTimer();
+    }
+  }
+
+  _startTimer() {
     let stopTime;
 
-    switch (taskType) {
+    //let taskType = this._taskQueue[0].type;
+    console.log(`starting task ${this.taskType}`);
+
+    switch (this.taskType) {
       case TaskType.WORK:
         stopTime = DateUtils.getDateInFuture(TaskInterval.WORK);
         break;
@@ -30,7 +43,7 @@ class TimerStore {
 
     this.setState({
       status: TaskStatus.RUNNING,
-      taskType: taskType,
+      taskType: TaskType.WORK,
       startTime: new Date(),
       stopTime: stopTime,
       timeLeft: stopTime - new Date()
@@ -38,10 +51,10 @@ class TimerStore {
     //console.log('timer started', this);
   }
 
-  onStopTimer() {
+  _stopTimer() {
     this.setState({
       status: TaskStatus.STOPPED,
-      taskType: null,
+      taskType: TaskType.WORK,
       startTime: null,
       stopTime: null,
       timeLeft: TaskInterval.WORK

@@ -16,12 +16,7 @@ class PomodoroTimer extends React.Component {
   }
 
   handleClick() {
-    if (this.props.status === 'stopped') {
-      TimerActions.startTimer('work');
-    }
-    else {
-      TimerActions.stopTimer();
-    }
+    TimerActions.switchTimer();
   }
 
   render() {

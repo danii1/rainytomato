@@ -1,11 +1,7 @@
 import alt from '../alt';
 
 class TimerActions {
-  startTimer(taskType) {
-    this.dispatch(taskType);
-  }
-
-  stopTimer() {
+  switchTimer() {
     this.dispatch();
   }
 
