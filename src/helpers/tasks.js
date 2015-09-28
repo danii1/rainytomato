@@ -15,6 +15,38 @@ const TaskInterval = {
   LONG_BREAK: 15 * 60 * 1000
 };
 
+class BaseTask {
+  constructor() {
+    this.status = TaskStatus.STOPPED;
+    this.startTime = null;
+    this.stopTime = null;
+  }
+}
+
+class WorkTask extends BaseTask {
+  constructor() {
+    super();
+    this.type = TaskType.WORK;
+    this.duration = TaskInterval.WORK;
+  }
+}
+
+class ShortBreakTask extends BaseTask {
+  constructor() {
+    super();
+    this.type = TaskType.SHORT_BREAK;
+    this.duration = TaskInterval.SHORT_BREAK;
+  }
+}
+
+class LongBreakTask extends BaseTask {
+  constructor() {
+    super();
+    this.type = TaskType.LONG_BREAK;
+    this.duration = TaskInterval.LONG_BREAK;
+  }
+}
+
 class TaskQueueBuilder {
   static build(setLength) {
     if (typeof setLength !== 'number') {
@@ -28,33 +60,17 @@ class TaskQueueBuilder {
     let queue = [];
 
     for (var i = 0; i < setLength; i++) {
-      queue.push({
-        type: TaskType.WORK,
-        status: TaskStatus.STOPPED,
-        startTime: null,
-        stopTime: null
-      });
+      queue.push(new WorkTask());
 
       if (i === setLength - 1) {
-        queue.push({
-          type: TaskType.LONG_BREAK,
-          status: TaskStatus.STOPPED,
-          startTime: null,
-          stopTime: null
-        });
+        queue.push(new LongBreakTask());
       } else {
-        queue.push({
-          type: TaskType.SHORT_BREAK,
-          status: TaskStatus.STOPPED,
-          startTime: null,
-          stopTime: null
-        });
+        queue.push(new ShortBreakTask());
       }
-
     }
 
     return queue;
   }
 }
 
-export {TaskStatus, TaskType, TaskInterval, TaskQueueBuilder};
+export {TaskStatus, TaskType, TaskInterval, WorkTask, ShortBreakTask, LongBreakTask, TaskQueueBuilder};

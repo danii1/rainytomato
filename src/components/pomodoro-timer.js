@@ -24,13 +24,14 @@ class PomodoroTimer extends React.Component {
       dashSize = 301.635,
       dashArray = `${dashSize}px, ${dashSize}px`;
 
-    let progress = 1 - (this.props.timeLeft / (25 * 60 * 1000));
+    let currentTask = this.props.tasks[this.props.currentTaskIndex];
+    let progress = 1 - (this.props.timeLeft / currentTask.duration);
     let dashOffset = dashSize - (dashSize * progress);
 
     let formattedDate = StringFormatter.getTimerDateString(this.props.timeLeft);
 
     let button;
-    if (this.props.tasks[this.props.currentTaskIndex].status === TaskStatus.RUNNING) {
+    if (currentTask.status === TaskStatus.RUNNING) {
       button = <i className="fa fa-stop"></i>;
     } else {
       button = <i className="fa fa-play"></i>;

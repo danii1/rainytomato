@@ -1,7 +1,7 @@
 var alt = require('../alt');
 import TimerActions from '../actions/timer-actions';
 import DateUtils from '../helpers/date-utils';
-import { TaskStatus, TaskType, TaskInterval, TaskQueueBuilder } from '../helpers/tasks';
+import { TaskStatus, TaskInterval, TaskQueueBuilder } from '../helpers/tasks';
 
 class TimerStore {
   constructor() {
@@ -23,19 +23,7 @@ class TimerStore {
     let stopTime;
 
     let currentTask = this.tasks[this.currentTaskIndex];
-    switch (currentTask.type) {
-      case TaskType.WORK:
-        stopTime = DateUtils.getDateInFuture(TaskInterval.WORK);
-        break;
-      case TaskType.SHORT_BREAK:
-        stopTime = DateUtils.getDateInFuture(TaskInterval.SHORT_BREAK);
-        break;
-      case taskType.LONG_BREAK:
-        stopTime = DateUtils.getDateInFuture(TaskInterval.LONG_BREAK);
-        break;
-      default:
-        break;
-    }
+    stopTime = DateUtils.getDateInFuture(currentTask.duration);
 
     currentTask.status = TaskStatus.RUNNING;
     currentTask.startTime = new Date();
