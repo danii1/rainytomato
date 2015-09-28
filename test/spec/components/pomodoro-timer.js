@@ -2,6 +2,7 @@ describe('PomodoroTimer', () => {
   let React = require('react/addons');
   let TestUtils = require('react/lib/ReactTestUtils');
   let PomodoroTimer = require('components/pomodoro-timer');
+  let DateUtils = require('helpers/date-utils');
 
   var TimerActions;
   var TimerStore;
@@ -58,4 +59,21 @@ describe('PomodoroTimer', () => {
     expect(TimerActions.switchTimer).toHaveBeenCalled();
     expect(TimerActions.switchTimer.calls.count()).toEqual(2);
   });
+
+  it('should update timer', () => {
+    let element = TestUtils.renderIntoDocument(<PomodoroTimer/>);
+    let timerStringValue = React.findDOMNode(element).innerText;
+    expect(timerStringValue).toEqual('25:00');
+
+    let button = TestUtils.findRenderedDOMComponentWithTag(element, 'a');
+    TestUtils.Simulate.click(button);
+
+    let futureDate = DateUtils.getDateInFuture(60 * 1000 - 500);
+    jasmine.clock().mockDate(futureDate);
+    TimerActions.checkTimer();
+
+    timerStringValue = React.findDOMNode(element).innerText;
+    expect(timerStringValue).toEqual('24:00');
+  });
+
 });

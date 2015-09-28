@@ -26,7 +26,7 @@ class TaskQueueBuilder {
     }
 
     let queue = [];
-    
+
     for (var i = 0; i < setLength; i++) {
       queue.push({
         type: TaskType.WORK,
