@@ -7,8 +7,14 @@ class Navbar extends React.Component {
       <nav className="navbar">
         <span className="title">Rainy Tomato</span>
         <span className="nav-links">
-          <Link to="timer">Timer</Link>
-          <Link to="about">About</Link>
+          <Link to="timer">
+            <i className="fa fa-clock-o" />
+            <span className="text-link">Timer</span>
+          </Link>
+          <Link to="about">
+            <i className="fa fa-info-circle" />
+            <span className="text-link">About</span>
+          </Link>
         </span>
       </nav>
     );

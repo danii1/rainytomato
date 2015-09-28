@@ -3,6 +3,7 @@
 $background-color: #222;
 $border-color: #ccc;
 $default-padding: 1rem;
+$default-margin: 1rem;
 $navbar-height: 4rem;
 $navbar-font-size: 2rem;
 $text-color: #fff;
@@ -85,12 +86,28 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
     line-height: $navbar-font-size;
     float:right;
 
-    a {
-      padding: 0 $default-padding;
+    i {
+      padding: 0 0 0 $default-padding;
+      font-size: $navbar-font-size;
     }
 
     a.active {
       font-weight: bold;
+    }
+
+    .text-link {
+      display: none;
+    }
+
+    @media (min-width: 550px) {
+      i {
+        display: none;
+      }
+
+      .text-link {
+        display: inline;
+        padding: 0 $default-padding;
+      }
     }
 
   }
