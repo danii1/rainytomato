@@ -5,16 +5,14 @@ import { TaskStatus, TaskType, TaskInterval, TaskQueueBuilder } from '../helpers
 
 class TimerStore {
   constructor() {
-    this._taskQueue = TaskQueueBuilder.build(4);
+    this.tasks = TaskQueueBuilder.build(4);
+    this.currentTaskIndex = 0;
     this.timeLeft = TaskInterval.WORK;
-    this.status = TaskStatus.STOPPED;
-    this.taskType = TaskType.WORK;
     this.bindActions(TimerActions);
   }
 
   onSwitchTimer() {
-    //let currentTaskStatus = this._taskQueue[0].status;
-    if (this.status === TaskStatus.RUNNING) {
+    if (this.tasks[this.currentTaskIndex].status === TaskStatus.RUNNING) {
       this._stopTimer();
     } else {
       this._startTimer();
@@ -24,10 +22,8 @@ class TimerStore {
   _startTimer() {
     let stopTime;
 
-    //let taskType = this._taskQueue[0].type;
-    console.log(`starting task ${this.taskType}`);
-
-    switch (this.taskType) {
+    let currentTask = this.tasks[this.currentTaskIndex];
+    switch (currentTask.type) {
       case TaskType.WORK:
         stopTime = DateUtils.getDateInFuture(TaskInterval.WORK);
         break;
@@ -41,31 +37,25 @@ class TimerStore {
         break;
     }
 
-    this.setState({
-      status: TaskStatus.RUNNING,
-      taskType: TaskType.WORK,
-      startTime: new Date(),
-      stopTime: stopTime,
-      timeLeft: stopTime - new Date()
-    });
-    //console.log('timer started', this);
+    currentTask.status = TaskStatus.RUNNING;
+    currentTask.startTime = new Date();
+    currentTask.stopTime = stopTime;
+    this.timeLeft = stopTime - new Date();
   }
 
   _stopTimer() {
-    this.setState({
-      status: TaskStatus.STOPPED,
-      taskType: TaskType.WORK,
-      startTime: null,
-      stopTime: null,
-      timeLeft: TaskInterval.WORK
-    });
-    //console.log('timer stopped', this);
+    let currentTask = this.tasks[this.currentTaskIndex];
+    currentTask.status = TaskStatus.STOPPED;
+    currentTask.startTime = null;
+    currentTask.stopTime = null;
+    this.timeLeft = TaskInterval.WORK;
   }
 
   onCheckTimer() {
     let timeLeft;
-    if (this.stopTime) {
-      timeLeft = this.stopTime - new Date();
+    let currentTask = this.tasks[this.currentTaskIndex];
+    if (currentTask.stopTime) {
+      timeLeft = currentTask.stopTime - new Date();
     } else {
       timeLeft = TaskInterval.WORK;
     }

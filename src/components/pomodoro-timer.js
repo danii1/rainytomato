@@ -1,4 +1,5 @@
 import StringFormatter from '../helpers/string-formatter';
+import { TaskStatus } from '../helpers/tasks';
 import React from 'react';
 import connectStores from 'alt/utils/connectToStores';
 import TimerStore from '../stores/timer-store';
@@ -11,8 +12,7 @@ class PomodoroTimer extends React.Component {
   }
 
   static getPropsFromStores() {
-     let state = TimerStore.getState();
-     return state;
+     return TimerStore.getState();
   }
 
   handleClick() {
@@ -30,7 +30,7 @@ class PomodoroTimer extends React.Component {
     let formattedDate = StringFormatter.getTimerDateString(this.props.timeLeft);
 
     let button;
-    if (this.props.status === 'running') {
+    if (this.props.tasks[this.props.currentTaskIndex].status === TaskStatus.RUNNING) {
       button = <i className="fa fa-stop"></i>;
     } else {
       button = <i className="fa fa-play"></i>;

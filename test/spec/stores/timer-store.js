@@ -22,30 +22,35 @@ describe('TimerStore', () => {
     // get initial state of store
     let state = TimerStore.getState();
     let action = TimerActions.SWITCH_TIMER;
-    expect(state.status).toEqual(TaskStatus.STOPPED);
+    let task = state.tasks[state.currentTaskIndex];
+    expect(task.status).toEqual(TaskStatus.STOPPED);
 
     // dispatch action (store is listening for action)
     // NOTE: FB's dispatcher expects keys "action" and "data"
     alt.dispatcher.dispatch({action, null});
     state = TimerStore.getState();
-    expect(state.status).toEqual(TaskStatus.RUNNING);
+    task = state.tasks[state.currentTaskIndex];
+    expect(task.status).toEqual(TaskStatus.RUNNING);
   });
 
   it('should start and stop timer on switchTimer action', () => {
     // get initial state of store
     let state = TimerStore.getState();
     let action = TimerActions.SWITCH_TIMER;
-    expect(state.status).toEqual(TaskStatus.STOPPED);
+    let task = state.tasks[state.currentTaskIndex];
+    expect(task.status).toEqual(TaskStatus.STOPPED);
 
     // check if timer started to run
     alt.dispatcher.dispatch({action, null});
     state = TimerStore.getState();
-    expect(state.status).toEqual(TaskStatus.RUNNING);
+    task = state.tasks[state.currentTaskIndex];
+    expect(task.status).toEqual(TaskStatus.RUNNING);
 
     // check if timer stopeed running
     alt.dispatcher.dispatch({action, null});
     state = TimerStore.getState();
-    expect(state.status).toEqual(TaskStatus.STOPPED);
+    task = state.tasks[state.currentTaskIndex];
+    expect(task.status).toEqual(TaskStatus.STOPPED);
   });
 
 
