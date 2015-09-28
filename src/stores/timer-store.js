@@ -11,8 +11,12 @@ class TimerStore {
     this.bindActions(TimerActions);
   }
 
+  get currentTask() {
+    return this.tasks[this.currentTaskIndex];
+  }
+
   onSwitchTimer() {
-    if (this.tasks[this.currentTaskIndex].status === TaskStatus.RUNNING) {
+    if (this.currentTask.status === TaskStatus.RUNNING) {
       this._stopTimer();
     } else {
       this._startTimer();
@@ -20,32 +24,26 @@ class TimerStore {
   }
 
   _startTimer() {
-    let stopTime;
-
-    let currentTask = this.tasks[this.currentTaskIndex];
-    stopTime = DateUtils.getDateInFuture(currentTask.duration);
-
-    currentTask.status = TaskStatus.RUNNING;
-    currentTask.startTime = new Date();
-    currentTask.stopTime = stopTime;
+    let stopTime = DateUtils.getDateInFuture(this.currentTask.duration);
+    this.currentTask.status = TaskStatus.RUNNING;
+    this.currentTask.startTime = new Date();
+    this.currentTask.stopTime = stopTime;
     this.timeLeft = stopTime - new Date();
   }
 
   _stopTimer() {
-    let currentTask = this.tasks[this.currentTaskIndex];
-    currentTask.status = TaskStatus.STOPPED;
-    currentTask.startTime = null;
-    currentTask.stopTime = null;
+    this.currentTask.status = TaskStatus.STOPPED;
+    this.currentTask.startTime = null;
+    this.currentTask.stopTime = null;
     this.timeLeft = TaskInterval.WORK;
   }
 
   onCheckTimer() {
     let timeLeft;
-    let currentTask = this.tasks[this.currentTaskIndex];
-    if (currentTask.stopTime) {
-      timeLeft = currentTask.stopTime - new Date();
+    if (this.currentTask.stopTime) {
+      timeLeft = this.currentTask.stopTime - new Date();
     } else {
-      timeLeft = TaskInterval.WORK;
+      timeLeft = this.currentTask.duration;
     }
     this.setState({ timeLeft: timeLeft });
   }
