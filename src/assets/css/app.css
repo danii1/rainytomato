@@ -5,6 +5,7 @@ $border-color: #ccc;
 $default-padding: 1rem;
 $default-margin: 1rem;
 $navbar-height: 4rem;
+$playlist-width: 20rem;
 $navbar-font-size: 2rem;
 $text-color: #fff;
 $blur-radius: 3px;
@@ -143,5 +144,19 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
     margin: 3rem 0 0 0;
     transform: translate(-50%, -50%);
     font-size: 3rem;
+  }
+}
+
+.playlist-widget {
+  position: fixed;
+  top: $navbar-height;
+  right: 0;
+  bottom: 0;
+  width: $playlist-width;
+  background-color: silver;
+  display: none;
+
+  @media (min-width: 1000px) {
+    display: block;
   }
 }

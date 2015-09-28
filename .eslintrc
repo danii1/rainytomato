@@ -16,6 +16,7 @@
     "quotes": [ 1, "single" ],
     "no-undef": false,
     "no-new": false,
+    "new-cap": false,
     "global-strict": true,
     "no-extra-semi": 1,
     "no-underscore-dangle": false,

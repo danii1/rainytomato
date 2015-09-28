@@ -9,20 +9,20 @@ const TaskType = {
   SHORT_BREAK: 'shortBreak'
 };
 
-/*
 const TaskInterval = {
   WORK: 25 * 60 * 1000,
   SHORT_BREAK: 5 * 60 * 1000,
   LONG_BREAK: 15 * 60 * 1000
 };
-*/
 
 // debug timer intervals
+/*
 const TaskInterval = {
   WORK: 3 * 1000,
   SHORT_BREAK: 1 * 1000,
   LONG_BREAK: 2 * 1000
 };
+*/
 
 class BaseTask {
   constructor() {
