@@ -47,6 +47,25 @@ class LongBreakTask extends BaseTask {
   }
 }
 
+class TaskBuilder {
+  static build(taskType) {
+    switch (taskType) {
+      case TaskType.WORK:
+        return new WorkTask();
+        break;
+      case TaskType.SHORT_BREAK:
+        return new ShortBreakTask();
+        break;
+      case TaskType.LONG_BREAK:
+        return new LongBreakTask();
+        break;
+      default:
+        return null;
+    }
+  }
+}
+
+
 class TaskQueueBuilder {
   static build(setLength) {
     if (typeof setLength !== 'number') {
@@ -73,4 +92,6 @@ class TaskQueueBuilder {
   }
 }
 
-export {TaskStatus, TaskType, TaskInterval, WorkTask, ShortBreakTask, LongBreakTask, TaskQueueBuilder};
+export {TaskStatus, TaskType, TaskInterval,
+  WorkTask, ShortBreakTask, LongBreakTask,
+  TaskQueueBuilder, TaskBuilder};

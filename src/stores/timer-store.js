@@ -1,7 +1,7 @@
 var alt = require('../alt');
 import TimerActions from '../actions/timer-actions';
 import DateUtils from '../helpers/date-utils';
-import { TaskStatus, TaskInterval, TaskQueueBuilder } from '../helpers/tasks';
+import { TaskStatus, TaskInterval, TaskBuilder, TaskQueueBuilder } from '../helpers/tasks';
 
 class TimerStore {
   constructor() {
@@ -42,6 +42,17 @@ class TimerStore {
     let timeLeft;
     if (this.currentTask.stopTime) {
       timeLeft = this.currentTask.stopTime - new Date();
+      // if current task time exceeded, stop current task and
+      // proceed to the new one
+      if (timeLeft <= 0) {
+        timeLeft = 0;
+        this.currentTask.status = TaskStatus.STOPPED;
+        let finishedTaskType = this.currentTask.type;
+        this.currentTaskIndex++;
+
+        // add new task of the same type as finished one to the end of the queue
+        this.tasks.push(TaskBuilder.build(finishedTaskType));
+      }
     } else {
       timeLeft = this.currentTask.duration;
     }

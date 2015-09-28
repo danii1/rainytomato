@@ -1,6 +1,7 @@
 import alt from 'root/alt';
 import { TaskType, TaskStatus } from 'helpers/tasks';
 //import TimerStore as ts from 'stores/timer-store';
+import DateUtils from 'helpers/date-utils';
 
 describe('TimerStore', () => {
   var TimerActions;
@@ -53,5 +54,58 @@ describe('TimerStore', () => {
     expect(task.status).toEqual(TaskStatus.STOPPED);
   });
 
+  it('should stop the task once stopTime reached', () => {
+    let state = TimerStore.getState();
+    let action = TimerActions.SWITCH_TIMER;
+    let task = state.tasks[state.currentTaskIndex];
+    expect(task.status).toEqual(TaskStatus.STOPPED);
+
+    // check if timer started to run
+    alt.dispatcher.dispatch({action, null});
+    state = TimerStore.getState();
+    task = state.tasks[state.currentTaskIndex];
+    expect(task.status).toEqual(TaskStatus.RUNNING);
+
+    // mock future time and dispatch timer check
+    let futureDate = DateUtils.getDateInFuture(task.duration + 1000);
+    jasmine.clock().mockDate(futureDate);
+    TimerActions.checkTimer();
+
+    state = TimerStore.getState();
+    task = state.tasks[state.currentTaskIndex];
+    expect(state.timeLeft).toEqual(0);
+    expect(task.status).toEqual(TaskStatus.STOPPED);
+  });
+
+  it('should switch to the next task once stopTime reached and add previous \
+    task to the end of the queue forming loop', () => {
+    let state = TimerStore.getState();
+    let action = TimerActions.SWITCH_TIMER;
+    let task = state.tasks[state.currentTaskIndex];
+    expect(task.status).toEqual(TaskStatus.STOPPED);
+
+    // check if timer started to run
+    alt.dispatcher.dispatch({action, null});
+    state = TimerStore.getState();
+    task = state.tasks[state.currentTaskIndex];
+    expect(task.status).toEqual(TaskStatus.RUNNING);
+
+    let oldIndex = state.currentTaskIndex;
+    let oldTasksLength = state.tasks.length;
+
+    // mock future time and dispatch timer check
+    let futureDate = DateUtils.getDateInFuture(task.duration + 1000);
+    jasmine.clock().mockDate(futureDate);
+    TimerActions.checkTimer();
+
+    state = TimerStore.getState();
+    let newIndex = state.currentTaskIndex;
+    let newTasksLength = state.tasks.length;
+    expect(newIndex).toEqual(oldIndex + 1);
+    expect(newTasksLength).toEqual(oldTasksLength + 1);
+
+    let lastTask = state.tasks[state.tasks.length - 1];
+    expect(state.tasks[oldIndex].type).toEqual(lastTask.type);
+  });
 
 });
