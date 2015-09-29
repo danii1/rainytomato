@@ -63,6 +63,11 @@ module.exports = {
   },
   postcss: [precss, autoprefixer],
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+          'YOUTUBE_KEY': JSON.stringify(process.env.RAINY_TOMATO_YOUTUBE_KEY)
+       }
+    }),    
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery"

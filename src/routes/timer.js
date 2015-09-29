@@ -9,7 +9,7 @@ export default React.createClass({
     return (
       <div className='timer-route'>
         <PomodoroTimer />
-        <PlaylistWidget playlist="https://soundcloud.com/exd/sets/anime-stuff" />
+        <PlaylistWidget playlist="http://www.youtube.com/watch?list=PL-jIehwqNsThxWrhoWVGDRIFo2EKcV1Nu" />
       </div>
     );
   }
