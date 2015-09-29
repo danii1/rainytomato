@@ -22,16 +22,34 @@ class YoutubeWidget extends React.Component {
     });
   }
 
+  _handlePlaylistItemClick(position) {
+    if (this.player) {
+      this.player.playVideoAt(position);
+    }
+  }
+
+  onReady(event) {
+    //console.log('player ready', event.target);
+    this.player = event.target;
+  }
+
+  onPlay(event) {
+    let index = event.target.getPlaylistIndex();
+    this.setState({
+      playbackIndex: index
+    });
+  }
+
   render() {
     const opts = {
       height: '180px',
       width: '100%',
       playerVars: { // https://developers.google.com/youtube/player_parameters
-        autoplay: 0,
+        autoplay: 1,
         listType: 'playlist',
         loop: 1,
-        showinfo: 1,
-        controls: 1,
+        showinfo: 0,
+        controls: 0,
         modestbranding: 1,
         list: this.state.playlistId
       }
@@ -40,10 +58,15 @@ class YoutubeWidget extends React.Component {
     let playlistItems = null;
     if (this.state && this.state.playlistItems) {
       playlistItems = this.state.playlistItems.map((playlistItem) => {
+        let playbackStatus = <div className="playback-status"></div>;
+        if (playlistItem.position === this.state.playbackIndex) {
+          playbackStatus = <div className="playback-status"><i className="fa fa-play"></i></div>;
+        }
         return (
-          <div className="playlist-item">
-            {playlistItem.title}
-          </div>
+          <a key={playlistItem.videoId} className="playlist-item" href="#" onClick={() => this._handlePlaylistItemClick(playlistItem.position)}>
+            {playbackStatus}
+            <div className="title">{playlistItem.title}</div>
+          </a>
         );
       });
     }
@@ -54,6 +77,8 @@ class YoutubeWidget extends React.Component {
           <YouTube
             url={this.props.playlist}
             opts={opts}
+            onReady={(event) => this.onReady(event)}
+            onPlay={(event) => this.onPlay(event)}
           />
         </div>
         <div className="playlist">

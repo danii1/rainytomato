@@ -158,7 +158,18 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
   background-color: $background-color;
 
   .playlist-item {
+    display: block;
+    position: relative;
     padding: $default-padding $default-padding 0 $default-padding;
+
+    .title {
+      margin-left: calc($default-margin * 2);
+    }
+
+    .playback-status {
+      position: absolute;
+    }
+
   }
 
 }
