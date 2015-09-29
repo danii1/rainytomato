@@ -5,8 +5,11 @@ import YoutubeApi from '../helpers/youtube-api';
 class YoutubeWidget extends React.Component {
   constructor(props) {
     super(props);
+
+    let playlistId = YoutubeApi.getPlaylistId(props.playlist);
+
     this.state = {
-      playlistId: 'PL-jIehwqNsThxWrhoWVGDRIFo2EKcV1Nu',
+      playlistId: playlistId,
       playlistItems: null
     };
 
@@ -60,5 +63,7 @@ class YoutubeWidget extends React.Component {
     );
   }
 }
+
+YoutubeWidget.propTypes = { playlist: React.PropTypes.string.isRequired };
 
 export default YoutubeWidget;

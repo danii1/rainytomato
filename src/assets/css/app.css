@@ -1,19 +1,19 @@
 /* variables */
 
-$background-color: #222;
-$border-color: #ccc;
 $default-padding: 1rem;
 $default-margin: 1rem;
 $navbar-height: 4rem;
 $playlist-width: 20rem;
 $navbar-font-size: 2rem;
-$text-color: #fff;
 $blur-radius: 3px;
 
-/* base */
+/* colors */
+$background-color: #222;
+$border-color: #ccc;
+$text-color: #fff;
 
+/* base */
 * {
-  //box-sizing: border-box;
   user-select: none;
 }
 
@@ -155,7 +155,7 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
   bottom: 0;
   width: $playlist-width;
   display: none;
-  background-color: black;
+  background-color: $background-color;
 
   .playlist-item {
     padding: $default-padding $default-padding 0 $default-padding;

@@ -1,4 +1,13 @@
 export default class YoutubeApi {
+  static getPlaylistId(url) {
+    let playlistMatches = url.match(/(?:list=)(.+?)(?:\&|$)/);
+    let playlistId = null;
+    if (playlistMatches.length > 1) {
+      playlistId = playlistMatches[1];
+    }
+    return playlistId;
+  }
+
   static _parseApiResults(response) {
     let json = JSON.parse(response);
     let result = json.items.map((item) => {
