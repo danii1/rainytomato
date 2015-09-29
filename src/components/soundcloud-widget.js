@@ -1,13 +1,13 @@
 import React from 'react';
 import StringFormatter from '../helpers/string-formatter';
+require('../vendor/soundcloud');
 
 class SoundcloudWidget extends React.Component {
   componentDidMount() {
     /*
     let widgetIframe = React.findDOMNode(this.refs.playlist);
     let widget = SC.Widget(widgetIframe);
-
-    widget.bind(SC.Widget.Events.READY, function() {
+    widget.bind(SC.Widget.Events.READY, () => {
       console.log('soundcloud widget ready');
     });
     */

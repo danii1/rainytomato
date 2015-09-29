@@ -1,5 +1,5 @@
 import startRouter from './router';
 import NotificationManager from './helpers/notification-manager';
-startRouter();
 
+startRouter();
 NotificationManager.requestPermissions();

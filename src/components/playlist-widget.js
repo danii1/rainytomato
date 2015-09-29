@@ -7,9 +7,9 @@ class PlaylistWidget extends React.Component {
     let playlist = this.props.playlist;
     let playlistElement;
     if (playlist.indexOf('soundcloud') > -1) {
-      playlistElement = <SoundcloudWidget playlist={playlist}/>;
+      playlistElement = <SoundcloudWidget {...this.props}/>;
     } else if (playlist.indexOf('youtube') > -1) {
-      playlistElement = <YoutubeWidget />;
+      playlistElement = <YoutubeWidget {...this.props} />;
     } else {
       playlistElement = <div className="emptyPlaylist"></div>;
     }
