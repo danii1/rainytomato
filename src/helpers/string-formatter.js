@@ -14,4 +14,11 @@ export default class StringFormatter {
     secs = secs.length === 2 ? secs : '0' + secs;
     return `${mins}:${secs}`;
   }
+
+  static escapeUri(uri) {
+    return encodeURIComponent(uri).replace(/[!'()*]/g, (c) => {
+      return '%' + c.charCodeAt(0).toString(16);
+    });
+  }
+
 }

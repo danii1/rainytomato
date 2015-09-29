@@ -149,11 +149,11 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
 
 .playlist-widget {
   position: fixed;
-  top: $navbar-height;
+  top: 50%;
+  margin-top: -250px;
   right: 0;
   bottom: 0;
   width: $playlist-width;
-  background-color: silver;
   display: none;
 
   @media (min-width: 1000px) {
