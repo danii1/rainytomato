@@ -26,6 +26,8 @@ class YoutubeWidget extends React.Component {
 
   _handlePlaylistItemClick(position) {
     if (this.player) {
+      console.log(this.state.playlistItems[position]);
+
       if (this.state.playbackIndex === position) {
         if (this.state.playbackStatus === 'playing') {
           this.player.pauseVideo();
@@ -39,7 +41,6 @@ class YoutubeWidget extends React.Component {
   }
 
   onReady(event) {
-    //console.log('player ready', event.target);
     this.player = event.target;
   }
 
@@ -68,7 +69,7 @@ class YoutubeWidget extends React.Component {
         listType: 'playlist',
         loop: 1,
         showinfo: 0,
-        controls: 0,
+        controls: 1,
         modestbranding: 1,
         list: this.state.playlistId
       }

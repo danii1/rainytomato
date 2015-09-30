@@ -216,6 +216,10 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
     bottom: 0;
     width: $playlist-width;
     background-color: silver;
+
+    .playlist-input, button {
+      color: black;
+    }
   }
 
 }
