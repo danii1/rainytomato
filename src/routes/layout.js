@@ -19,7 +19,7 @@ export default React.createClass({
         </BackgroundBox>
         <div className="content">
           <RouteHandler />
-          <PlaylistWidget playlist="http://www.youtube.com/watch?list=PL-jIehwqNsThxWrhoWVGDRIFo2EKcV1Nu" />
+          <PlaylistWidget playlist="https://soundcloud.com/devolverdigital/sets/hotline-miami-official" />
         </div>
         <TaskWatcher />
       </div>

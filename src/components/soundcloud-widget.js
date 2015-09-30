@@ -4,8 +4,9 @@ require('../vendor/soundcloud');
 
 class SoundcloudWidget extends React.Component {
   componentDidMount() {
+    this._adjustWidgetHeight();
+    window.addEventListener('resize', () => { this._adjustWidgetHeight() } , true);
     /*
-    let widgetIframe = React.findDOMNode(this.refs.playlist);
     let widget = SC.Widget(widgetIframe);
     widget.bind(SC.Widget.Events.READY, () => {
       console.log('soundcloud widget ready');
@@ -13,12 +14,22 @@ class SoundcloudWidget extends React.Component {
     */
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('resize');
+  }
+
+  _adjustWidgetHeight() {
+    let widgetIframe = React.findDOMNode(this.refs.playlist);
+    widgetIframe.height = document.body.clientHeight;
+  }
+
   render() {
     let escapedPlaylistUrl = StringFormatter.escapeUri(this.props.playlist);
-    let playlistWidgetUrl = `https://w.soundcloud.com/player/?url=${escapedPlaylistUrl}&auto_play=false&hide_related=true&show_user=true&show_reposts=false&visual=true&show_comments=false`;
+    let playlistWidgetUrl = `https://w.soundcloud.com/player/?url=${escapedPlaylistUrl}&auto_play=false&hide_related=true&show_user=true&show_reposts=false&visual=false&show_comments=false`;
+    console.log('playlistWidgetUrl', playlistWidgetUrl);
     return (
       <div className="soundcloud-widget" >
-        <iframe id="souncloud-playlist" ref="playlist" width="100%" height="500px" scrolling="no" frameBorder="no" src={playlistWidgetUrl}></iframe>
+        <iframe id="souncloud-playlist" ref="playlist" width="100%" height="320px" scrolling="no" frameBorder="no" src={playlistWidgetUrl}></iframe>
       </div>
     );
   }

@@ -163,6 +163,17 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
   width: $playlist-width;
   display: none;
 
+  .soundcloud-widget {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: $playlist-width;
+
+    .widget {
+      border-radius: 0;
+    }
+  }
+
   .video {
     position: fixed;
     top: 0;
