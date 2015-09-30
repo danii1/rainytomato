@@ -3,6 +3,7 @@ import connectStores from 'alt/utils/connectToStores';
 import TimerStore from '../stores/timer-store';
 import TimerActions from '../actions/timer-actions';
 import NotificationManager from '../helpers/notification-manager';
+import StringFormatter from '../helpers/string-formatter';
 import {TaskStatus} from '../helpers/tasks';
 
 // One task watcher per application, should constantly poll TimerStore
@@ -40,6 +41,9 @@ class TaskWatcher extends React.Component {
     if (nextStatus !== TaskStatus.RUNNING && this.interval !== null) {
       this.resetInterval();
     }
+
+    let time = nextProps.timeLeft;
+    document.title = StringFormatter.getTimerDateString(time);
 
     let triggerNotification = this.props.currentTaskIndex < nextProps.currentTaskIndex;
     if (triggerNotification) {
