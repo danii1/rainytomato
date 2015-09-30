@@ -3,22 +3,44 @@ import connectStores from 'alt/utils/connectToStores';
 import TimerStore from '../stores/timer-store';
 import TimerActions from '../actions/timer-actions';
 import NotificationManager from '../helpers/notification-manager';
+import {TaskStatus} from '../helpers/tasks';
 
 // One task watcher per application, should constantly poll TimerStore
 // for changes
 @connectStores
 class TaskWatcher extends React.Component {
+  constructor(props) {
+    super(props);
+    this.interval = null;
+  }
+
   componentDidMount() {
-    this.interval = setInterval( () => {
-      TimerActions.checkTimer();
-    }, 1000);
+    TimerActions.checkTimer();
   }
 
   componentWillUnmount() {
-    clearInterval(this.interval);
+    this.resetInterval();
+  }
+
+  resetInterval() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+    this.interval = null;
   }
 
   componentWillReceiveProps(nextProps) {
+    let nextStatus = nextProps.tasks[nextProps.currentTaskIndex].status;
+    if (nextStatus === TaskStatus.RUNNING && this.interval === null) {
+      this.interval = setInterval( () => {
+        TimerActions.checkTimer();
+      }, 1000);
+    }
+
+    if (nextStatus !== TaskStatus.RUNNING && this.interval !== null) {
+      this.resetInterval();
+    }
+
     let triggerNotification = this.props.currentTaskIndex < nextProps.currentTaskIndex;
     if (triggerNotification) {
       // trigger notification based on task type

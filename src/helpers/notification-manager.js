@@ -1,4 +1,5 @@
 import { TaskType } from './tasks';
+import icon from 'images/notification_icon.png';
 
 export default class NotificationManager {
   static requestPermissions() {
@@ -12,13 +13,18 @@ export default class NotificationManager {
       let notificationMessage;
       switch (taskType) {
         case TaskType.WORK:
-          notificationMessage = 'Work session finished, you can relax now!';
+          notificationMessage = 'Work session is finished, you can relax now!';
           break;
         default:
-          notificationMessage = 'Break finished, now get back to work!';
+          notificationMessage = 'Break is over, now get back to work!';
       }
-      // TODO: add sound and icon to Notification
-      new Notification(notificationMessage);
+
+      new Notification('Rainy Tomato', {
+        tag: 'tomatoNotification',
+        body: notificationMessage,
+        icon: icon
+      });
+
       if (voice) {
         // TODO: speak notification message
       }

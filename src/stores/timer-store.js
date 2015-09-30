@@ -50,6 +50,11 @@ class TimerStore {
         let finishedTaskType = this.currentTask.type;
         this.currentTaskIndex++;
 
+        //we must briefly show that timer reached 0, and then display next task duration
+        setTimeout(()=>{
+          this.setState({timeLeft: this.currentTask.duration});
+        }, 500);
+
         // add new task of the same type as finished one to the end of the queue
         this.tasks.push(TaskBuilder.build(finishedTaskType));
       }
@@ -57,6 +62,7 @@ class TimerStore {
       timeLeft = this.currentTask.duration;
     }
     this.setState({ timeLeft: timeLeft });
+
   }
 
 }
