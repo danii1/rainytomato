@@ -5,7 +5,7 @@ require('../vendor/soundcloud');
 class SoundcloudWidget extends React.Component {
   componentDidMount() {
     this._adjustWidgetHeight();
-    window.addEventListener('resize', () => { this._adjustWidgetHeight() } , true);
+    window.addEventListener('resize', () => { this._adjustWidgetHeight(); }, true);
     /*
     let widget = SC.Widget(widgetIframe);
     widget.bind(SC.Widget.Events.READY, () => {
