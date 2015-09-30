@@ -143,20 +143,19 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
     position: absolute;
     left: 50%;
     top: 50%;
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 5px 0 0 0;
     transform: translate(-50%, -50%);
-    font-size: 3rem;
+    font-size: 4rem;
   }
 
   .timer-control {
-    position: absolute;
-    left: 50%;
-    top: 50%;
+    margin-top: $default-margin;
     padding: 0px;
-    margin: 3rem 0 0 0;
-    transform: translate(-50%, -50%);
-    font-size: 3rem;
+    font-size: 2rem;
+    display: block;
+    width: 100%;
+    text-align: center;
   }
 }
 

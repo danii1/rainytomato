@@ -1,7 +1,7 @@
 var alt = require('../alt');
 import TimerActions from '../actions/timer-actions';
 import DateUtils from '../helpers/date-utils';
-import { TaskStatus, TaskInterval, TaskBuilder, TaskQueueBuilder } from '../helpers/tasks';
+import { TaskType, TaskStatus, TaskInterval, TaskBuilder, TaskQueueBuilder } from '../helpers/tasks';
 
 class TimerStore {
   constructor() {
@@ -17,7 +17,13 @@ class TimerStore {
 
   onSwitchTimer() {
     if (this.currentTask.status === TaskStatus.RUNNING) {
-      this._stopTimer();
+      // if current task is work then stop timer, if it's break we
+      // should skip it and prepare next task
+      if (this.currentTask.type === TaskType.WORK) {
+        this._stopTimer();
+      } else {
+        this._nextTask();
+      }
     } else {
       this._startTimer();
     }
@@ -35,7 +41,14 @@ class TimerStore {
     this.currentTask.status = TaskStatus.STOPPED;
     this.currentTask.startTime = null;
     this.currentTask.stopTime = null;
-    this.timeLeft = TaskInterval.WORK;
+    this.timeLeft = this.currentTask.duration;
+  }
+
+  _nextTask() {
+    this.currentTask.status = TaskStatus.STOPPED;
+    this.currentTask.stopTime = new Date();
+    this.currentTaskIndex++;
+    this.timeLeft = this.currentTask.duration;
   }
 
   onCheckTimer() {

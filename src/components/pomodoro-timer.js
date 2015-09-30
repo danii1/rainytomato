@@ -1,5 +1,5 @@
 import StringFormatter from '../helpers/string-formatter';
-import { TaskStatus } from '../helpers/tasks';
+import { TaskStatus, TaskType } from '../helpers/tasks';
 import React from 'react';
 import connectStores from 'alt/utils/connectToStores';
 import TimerStore from '../stores/timer-store';
@@ -31,11 +31,20 @@ class PomodoroTimer extends React.Component {
     let formattedDate = StringFormatter.getTimerDateString(this.props.timeLeft);
 
     let button;
-    if (currentTask.status === TaskStatus.RUNNING) {
-      button = <i className="fa fa-stop"></i>;
+    if (currentTask.type === TaskType.WORK) {
+      if (currentTask.status === TaskStatus.RUNNING) {
+        button = <div><i className="fa fa-stop"></i> Stop Pomodoro </div>;
+      } else {
+        button = <div><i className="fa fa-play"></i> Start Pomodoro </div>;
+      }
     } else {
-      button = <i className="fa fa-play"></i>;
+      if (currentTask.status === TaskStatus.RUNNING) {
+        button = <div><i className="fa fa-step-forward"></i> Skip Break </div>;
+      } else {
+        button = <div><i className="fa fa-play"></i> Start Break </div>;
+      }
     }
+
 
     return (
       <div className="pomodoro-timer">

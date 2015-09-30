@@ -9,7 +9,15 @@ export default class StringFormatter {
     }
 
     let mins = Math.floor(time / 1000 / 60).toString();
+    // we have to use round instead of floor, because timer doesn't guarantee
+    // strict tick intervals
     let secs = Math.round(time / 1000 % 60).toString();
+
+    // correct js timer
+    if (secs === 60) {
+      secs = 59;
+    }
+
     mins = mins.length === 2 ? mins : '0' + mins;
     secs = secs.length === 2 ? secs : '0' + secs;
     return `${mins}:${secs}`;
