@@ -52,7 +52,7 @@ module.exports = {
     loaders: [{
       test: /\.(js|jsx)$/,
       exclude: /node_modules/,
-      loader: 'babel-loader?optional=es7.decorators&stage=2'
+      loader: 'babel-loader?optional=es7.decorators&stage=0'
     }, {
       test: /\.css$/,
       loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
@@ -67,7 +67,7 @@ module.exports = {
       'process.env': {
           'YOUTUBE_KEY': JSON.stringify(process.env.RAINY_TOMATO_YOUTUBE_KEY)
        }
-    }),    
+    }),
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery"

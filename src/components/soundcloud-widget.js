@@ -26,7 +26,6 @@ class SoundcloudWidget extends React.Component {
   render() {
     let escapedPlaylistUrl = StringFormatter.escapeUri(this.props.playlist);
     let playlistWidgetUrl = `https://w.soundcloud.com/player/?url=${escapedPlaylistUrl}&auto_play=false&hide_related=true&show_user=true&show_reposts=false&visual=false&show_comments=false`;
-    console.log('playlistWidgetUrl', playlistWidgetUrl);
     return (
       <div className="soundcloud-widget" >
         <iframe id="souncloud-playlist" ref="playlist" width="100%" height="320px" scrolling="no" frameBorder="no" src={playlistWidgetUrl}></iframe>

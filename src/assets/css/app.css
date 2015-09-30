@@ -168,10 +168,6 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
     top: 0;
     right: 0;
     width: $playlist-width;
-
-    .widget {
-      border-radius: 0;
-    }
   }
 
   .video {
@@ -211,6 +207,15 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
       width: 2rem;
       vertical-align: middle;
     }
+  }
+
+  .my-playlists {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: $playlist-width;
+    background-color: silver;
   }
 
 }

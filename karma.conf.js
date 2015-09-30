@@ -29,7 +29,7 @@ module.exports = function (config) {
       module: {
         loaders: [{
           test: /\.(js|jsx)$/,
-          loader: 'babel-loader?optional=es7.decorators&stage=2',
+          loader: 'babel-loader?optional=es7.decorators&stage=0',
           exclude: /node_modules/
         }, {
           test: /\.css$/,
