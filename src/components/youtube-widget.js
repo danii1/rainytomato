@@ -69,7 +69,7 @@ class YoutubeWidget extends React.Component {
         listType: 'playlist',
         loop: 1,
         showinfo: 0,
-        controls: 1,
+        controls: 0,
         modestbranding: 1,
         list: this.state.playlistId
       }
