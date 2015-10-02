@@ -7,7 +7,6 @@
 'use strict';
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
-var precss = require('precss');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -52,8 +51,8 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'react-hot!babel-loader?optional=es7.decorators&stage=0'
     }, {
-      test: /\.css$/,
-      loader: 'style-loader!css-loader!postcss-loader'
+      test: /\.(css|scss)$/,
+      loader: 'style-loader!css-loader!sass-loader!postcss-loader'
     }, {
       test: /\.(png|jpg|otf|eot|svg|ttf|woff|woff2)(\?.+)?$/,
       loader: 'url-loader?limit=8192'
@@ -62,7 +61,7 @@ module.exports = {
       loader: 'file-loader'
     }]
   },
-  postcss: [autoprefixer, precss],
+  postcss: [autoprefixer],
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {

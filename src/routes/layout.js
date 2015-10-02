@@ -1,7 +1,7 @@
 'use strict';
 // CSS
 import 'normalize.css';
-import '../assets/css/app.css';
+import '../assets/css/app.scss';
 
 import React from 'react';
 import { RouteHandler } from 'react-router';

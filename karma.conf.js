@@ -2,7 +2,6 @@
 
 var path = require('path');
 var autoprefixer = require('autoprefixer');
-var precss = require('precss');
 var webpack = require('webpack');
 
 module.exports = function (config) {
@@ -33,8 +32,8 @@ module.exports = function (config) {
           loader: 'babel-loader?optional=es7.decorators&stage=0',
           exclude: /node_modules/
         }, {
-          test: /\.css$/,
-          loader: 'style-loader!css-loader!postcss-loader'
+          test: /\.(css|scss)$/,
+          loader: 'style-loader!css-loader!sass-loader!postcss-loader'
         }, {
           test: /\.(png|jpg|otf|eot|svg|ttf|woff|woff2)(\?.+)?$/,
           loader: 'url-loader?limit=8192'
@@ -43,7 +42,7 @@ module.exports = function (config) {
           loader: 'file-loader'
         }]
       },
-      postcss: [autoprefixer, precss],
+      postcss: [autoprefixer],
       plugins: [
         new webpack.ProvidePlugin({
           Howler: 'howler'

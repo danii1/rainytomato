@@ -1,0 +1,13 @@
+.background-box {
+  /* filter: blur($blur-radius); */
+  width: 100%;
+  height: 100%;
+}
+
+.background-box::after {
+  content: '';
+  position:absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
