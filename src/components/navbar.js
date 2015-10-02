@@ -1,21 +1,33 @@
 import React from 'react';
-import { Link } from 'react-router';
 
 class Navbar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.musicSidebarOpen = false;
+  }
+
+  _handleMusicToggle() {
+    this.musicSidebarOpen = !this.musicSidebarOpen;
+    console.log('toggle sidebar', this.musicSidebarOpen);
+    const element = document.getElementById('react');
+    if (this.musicSidebarOpen) {
+      element.className = 'music-sidebar-open';
+    } else {
+      element.className = '';
+    }
+  }
+
   render() {
     return (
       <nav className="navbar">
         <span className="title">Rainy Tomato</span>
         <span className="nav-links">
-          <Link to="timer">
-            <i className="fa fa-clock-o" />
-            <span className="text-link">Timer</span>
-          </Link>
-          <Link to="about">
-            <i className="fa fa-info-circle" />
-            <span className="text-link">About</span>
-          </Link>
+          <a href="#" onClick={::this._handleMusicToggle}>
+            <i className="fa fa-music" />
+          </a>
         </span>
+        <a href="#" onClick={::this._handleMusicToggle} className="overlay">
+        </a>
       </nav>
     );
   }

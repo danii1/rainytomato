@@ -19,8 +19,8 @@ export default React.createClass({
         </BackgroundBox>
         <div className="content">
           <RouteHandler />
-          <PlaylistWidget />
         </div>
+        <PlaylistWidget />
         <TaskWatcher />
       </div>
     );

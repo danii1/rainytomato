@@ -81,41 +81,25 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
   right: 0;
   height: $navbar-height;
   padding: $default-padding;
-  z-index: 2;
+  z-index: 1;
 
   .title {
     font-size: $navbar-font-size;
   }
 
   .nav-links {
-    font-size: $navbar-font-size - 0.5rem;
+    font-size: 1.5rem;
     line-height: $navbar-font-size;
     float:right;
 
     i {
       padding: 0 0 0 $default-padding;
-      font-size: $navbar-font-size;
+      //font-size: $navbar-font-size;
     }
 
     a.active {
       font-weight: bold;
     }
-
-    .text-link {
-      display: none;
-    }
-
-    @media (min-width: 550px) {
-      i {
-        display: none;
-      }
-
-      .text-link {
-        display: inline;
-        padding: 0 $default-padding;
-      }
-    }
-
   }
 }
 
@@ -161,9 +145,6 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
 }
 
 .playlist-widget {
-  width: $playlist-width;
-  display: none;
-
   .soundcloud-widget {
     position: fixed;
     top: 0;
@@ -222,18 +203,59 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
     }
   }
 
+  .my-playlists, .playlist, .video, .soundcloud-widget {
+    transform: translateX($playlist-width);
+    transition: transform .2s ease-in-out;
+
+  }
+
+}
+
+.music-sidebar-open {
+  .my-playlists, .playlist, .video, .soundcloud-widget {
+    transform: translateX(0px);
+    transition: transform .2s ease-in-out;
+    z-index: 10000;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .overlay {
+    display: block;
+  }
+}
+
+.overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  height: 100%;
+  width: 100%;
+
+  display: none;
+  background: rgba(0,0,0,.5);
+  z-index: 5000;
 }
 
 @media (min-width: 650px) {
-  .playlist-widget {
-    display: block;
+  .music-sidebar-open {
+    .nav-links {
+      display: block;
+    }
+
+    .navbar, .content {
+      right: $playlist-width;
+    }
+
+    .overlay {
+      display: none;
+    }
   }
 
   .navbar, .content {
-    right: $playlist-width;
-  }
-
-  body {
-    margin-right: $playlist-width;
+    transition: right .2s ease-in-out;
   }
 }
