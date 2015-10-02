@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "alt": "^0.17.3",
-    "jquery": "^2.1.4",
+    "howler": "^1.1.26",
     "normalize.css": "~3.0.3",
     "rainyday.js": "git://github.com/maroslaw/rainyday.js.git",
     "react": "0.13.x",

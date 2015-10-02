@@ -1,3 +1,4 @@
+import SoundManager from '../helpers/sound-manager';
 import StringFormatter from '../helpers/string-formatter';
 import { TaskStatus, TaskType } from '../helpers/tasks';
 import React from 'react';
@@ -16,6 +17,10 @@ class PomodoroTimer extends React.Component {
   }
 
   handleClick() {
+    const currentTask = this.props.tasks[this.props.currentTaskIndex];
+    if (currentTask.status === TaskStatus.STOPPED) {
+      SoundManager.playStartSound();
+    }
     TimerActions.switchTimer();
   }
 

@@ -3,6 +3,7 @@
 var path = require('path');
 var autoprefixer = require('autoprefixer');
 var precss = require('precss');
+var webpack = require('webpack');
 
 module.exports = function (config) {
   config.set({
@@ -37,14 +38,24 @@ module.exports = function (config) {
         }, {
           test: /\.(png|jpg|otf|eot|svg|ttf|woff|woff2)(\?.+)?$/,
           loader: 'url-loader?limit=8192'
+        }, {
+          test: /\.(wav|ogg|mp3)(\?.+)?$/,
+          loader: 'file-loader'
         }]
       },
       postcss: [autoprefixer, precss],
+      plugins: [
+        new webpack.ProvidePlugin({
+          Howler: 'howler'
+        })
+      ],
       resolve: {
         alias: {
+          'howler': __dirname + '/node_modules/howler/howler.js',
           'root': path.join(process.cwd(), './src/'),
           'styles': path.join(process.cwd(), './src/styles/'),
           'images': path.join(process.cwd(), '/src/assets/images'),
+          'sounds': path.join(process.cwd(), '/src/assets/sounds'),
           'components': path.join(process.cwd(), './src/components/'),
           'routes': path.join(process.cwd(), './src/routes/'),
           'helpers': path.join(process.cwd(), './src/helpers/'),

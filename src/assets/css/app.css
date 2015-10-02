@@ -35,6 +35,7 @@ html, body, #react, #react > div {
 a, a:hover, a:visited, a:active {
   color: $text-color;
   text-decoration: none;
+  outline: 0;
 }
 
 h1 { font-size: 3.0rem; line-height: 1.2;  letter-spacing: -.1rem;}
@@ -195,7 +196,6 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
   .playlist-item {
     display: table;
     padding: 0.5rem $default-padding 0.5rem $default-padding;
-    outline: 0;
     width: 100%;
 
     .title {

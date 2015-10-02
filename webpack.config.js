@@ -30,9 +30,10 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     alias: {
-      'jquery': __dirname + '/node_modules/jquery/dist/jquery.js',
+      'howler': __dirname + '/node_modules/howler/howler.js',
       'styles': __dirname + '/src/assets/css',
       'images': __dirname + '/src/assets/images',
+      'sounds': __dirname + '/src/assets/sounds',
       'mixins': __dirname + '/src/mixins',
       'components': __dirname + '/src/components/',
       'routes': __dirname + '/src/routes/',
@@ -56,6 +57,9 @@ module.exports = {
     }, {
       test: /\.(png|jpg|otf|eot|svg|ttf|woff|woff2)(\?.+)?$/,
       loader: 'url-loader?limit=8192'
+    }, {
+      test: /\.(wav|ogg|mp3)(\?.+)?$/,
+      loader: 'file-loader'
     }]
   },
   postcss: [autoprefixer, precss],
@@ -66,8 +70,7 @@ module.exports = {
        }
     }),
     new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery"
+      Howler: 'howler'
     }),
     new HtmlWebpackPlugin({
       inject: 'body',

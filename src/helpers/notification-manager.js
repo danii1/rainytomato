@@ -1,5 +1,6 @@
 import { TaskType } from './tasks';
 import icon from 'images/notification_icon.png';
+import SoundManager from './sound-manager';
 
 export default class NotificationManager {
   static requestPermissions() {
@@ -27,6 +28,8 @@ export default class NotificationManager {
 
       if (voice) {
         // TODO: speak notification message
+      } else {
+        SoundManager.playStopSound();
       }
     }
   }
