@@ -30,8 +30,7 @@ describe('PomodoroTimer', () => {
   it('should display proper timer value', () => {
     let element = TestUtils.renderIntoDocument(<PomodoroTimer/>);
     let timerStringValue = React.findDOMNode(element).innerText;
-    const expectedValue = '25:00'
-    expect(timerStringValue).toEqual(expectedValue);
+    expect(timerStringValue).toMatch(/25\:00/);
   });
 
   it('should render switch button', () => {
@@ -63,7 +62,7 @@ describe('PomodoroTimer', () => {
   it('should update timer', () => {
     let element = TestUtils.renderIntoDocument(<PomodoroTimer/>);
     let timerStringValue = React.findDOMNode(element).innerText;
-    expect(timerStringValue).toEqual('25:00');
+    expect(timerStringValue).toMatch(/25\:00/);
 
     let button = TestUtils.findRenderedDOMComponentWithTag(element, 'a');
     TestUtils.Simulate.click(button);
@@ -73,7 +72,7 @@ describe('PomodoroTimer', () => {
     TimerActions.checkTimer();
 
     timerStringValue = React.findDOMNode(element).innerText;
-    expect(timerStringValue).toEqual('24:00');
+    expect(timerStringValue).toMatch(/24\:00/);
   });
 
 });
