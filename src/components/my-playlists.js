@@ -11,10 +11,13 @@ class MyPlaylists extends React.Component {
     };
   }
 
-
   _validateInput(value) {
-    // TODO: improve validation
-    return (value.indexOf('soundcloud') > -1 || value.indexOf('youtu') > -1);
+    if (value.indexOf('soundcloud') > -1) {
+      return true;
+    } else if (value.indexOf('youtu') > -1 && value.indexOf('list=') > -1) {
+      return true;
+    }
+    return false;
   }
 
   _handleAddPlaylistClick(){
