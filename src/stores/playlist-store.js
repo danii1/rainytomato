@@ -1,15 +1,12 @@
 var alt = require('../alt');
 import PlaylistActions from '../actions/playlist-actions';
+import LocalStorageProvider from '../helpers/local-storage-provider';
 
 class PlaylistStore {
   constructor() {
-    try {
-      this.playlists = JSON.parse(localStorage.getItem('playlists'));
-    } catch (e) {
-      this.playlists = null;
-    }
+    this.playlists = LocalStorageProvider.get('playlists');
 
-    if (this.playlists === undefined || this.playlists === null) {
+    if (this.playlists === null) {
       // set default values for now
       this.playlists = [
         'https://soundcloud.com/devolverdigital/sets/hotline-miami-official',
@@ -23,7 +20,7 @@ class PlaylistStore {
 
   onAddPlaylist(playlist) {
     this.playlists.push(playlist);
-    localStorage.setItem('playlists', JSON.stringify(this.playlists));
+    LocalStorageProvider.set('playlists', this.playlists);
   }
 
   onDeletePlaylist(playlist) {
