@@ -1,0 +1,28 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $navbar-height;
+  padding: $default-padding;
+  z-index: 1;
+
+  .title {
+    font-size: $navbar-font-size;
+  }
+
+  .nav-links {
+    font-size: 1.5rem;
+    line-height: $navbar-font-size;
+    float:right;
+
+    i {
+      padding: 0 0 0 $default-padding;
+      //font-size: $navbar-font-size;
+    }
+
+    a.active {
+      font-weight: bold;
+    }
+  }
+}

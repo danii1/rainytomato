@@ -1,0 +1,64 @@
+.playlist-widget {
+  .soundcloud-widget {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: $playlist-width;
+  }
+
+  .video {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: $playlist-width;
+    z-index: 1;
+  }
+
+  .playlist {
+    position: fixed;
+    top: 180px;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    width: $playlist-width;
+    background-color: $background-color;
+  }
+
+  a:hover, .playlist .active {
+    background-color: $highlight-background-color;
+  }
+
+  .playlist-item {
+    display: table;
+    padding: 0.5rem $default-padding 0.5rem $default-padding;
+    width: 100%;
+
+    .title {
+      display: table-cell;
+    }
+
+    .playback-status {
+      display: table-cell;
+      width: 2rem;
+      vertical-align: middle;
+    }
+  }
+
+  .my-playlists {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: $playlist-width;
+    background-color: silver;
+
+    .playlist-input, button {
+      color: black;
+    }
+  }
+
+  .my-playlists, .playlist, .video, .soundcloud-widget {
+    transform: translateX($playlist-width);
+    transition: transform .2s ease-in-out;
+  }
+}

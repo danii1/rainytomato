@@ -1,0 +1,51 @@
+// sidebar on low resolutions
+.music-sidebar-open {
+  .my-playlists, .playlist, .video, .soundcloud-widget {
+    transform: translateX(0px);
+    transition: transform .2s ease-in-out;
+    z-index: 10000;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .overlay {
+    display: block;
+  }
+}
+
+// sidebar on higher resolutions
+@media (min-width: 650px) {
+  .music-sidebar-open {
+    .nav-links {
+      display: block;
+    }
+
+    .navbar, .content {
+      right: $playlist-width;
+    }
+
+    .overlay {
+      display: none;
+    }
+  }
+
+  .navbar, .content {
+    transition: right .2s ease-in-out;
+  }
+}
+
+// overlay displayed on lower resolutions when sidebar open
+.overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  height: 100%;
+  width: 100%;
+
+  display: none;
+  background: rgba(0,0,0,.5);
+  z-index: 5000;
+}

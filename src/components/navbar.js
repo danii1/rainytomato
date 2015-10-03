@@ -3,12 +3,11 @@ import React from 'react';
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
-    this.musicSidebarOpen = false;
+    this._handleMusicToggle();
   }
 
   _handleMusicToggle() {
     this.musicSidebarOpen = !this.musicSidebarOpen;
-    console.log('toggle sidebar', this.musicSidebarOpen);
     const element = document.getElementById('react');
     if (this.musicSidebarOpen) {
       element.className = 'music-sidebar-open';
