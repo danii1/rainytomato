@@ -30,6 +30,10 @@ class MyPlaylists extends React.Component {
       this.setState({
         playlists: modifiedPlaylists
       });
+
+      // reset input value after adding it playlists
+      const input = React.findDOMNode(this.refs.customPlaylistInput);
+      input.value = '';
     } else {
       console.log('Only youtube and soundcloud playlists are supported, got ' + value);
     }
@@ -38,14 +42,16 @@ class MyPlaylists extends React.Component {
   render() {
     let playlists = this.state.playlists.map((playlist, index) => {
       return (
-        <li key={index}><a href="#" onClick={() => this.props.onPlaylistChoose(playlist)}>{playlist}</a></li>
+        <a className="my-playlist" key={index} href="#" onClick={() => this.props.onPlaylistChoose(playlist)}>{playlist}</a>
       );
     });
     return (
       <div className="my-playlists">
-        <ul>{playlists}</ul>
-        <input className="playlist-input" ref="customPlaylistInput" type="text" />
-        <button onClick={::this._handleAddPlaylistClick}>Add playlist</button>
+        <div>{playlists}</div>
+        <div className="playlist-add-container">
+          <input className="playlist-input" ref="customPlaylistInput" type="text" />
+          <a href="#" className="playlist-add" onClick={::this._handleAddPlaylistClick}>Add playlist</a>
+        </div>
       </div>
     );
   }

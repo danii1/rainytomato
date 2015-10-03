@@ -2,13 +2,20 @@
 
 $default-padding: 1rem;
 $default-margin: 1rem;
+$min-padding: 0.5rem;
+$min-margin: 0.5rem;
 $navbar-height: 4rem;
 $playlist-width: 20rem;
 $navbar-font-size: 2rem;
+$border-radius: 3px;
 $blur-radius: 3px;
 
 /* colors */
 $background-color: #222;
 $highlight-background-color: #333;
+$playlist-color: #fff;
+$playlist-text-color: #222;
 $border-color: #ccc;
 $text-color: #fff;
+
+$tomato: tomato;
