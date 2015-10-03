@@ -1,14 +1,16 @@
 import React from 'react';
+import connectStores from 'alt/utils/connectToStores';
+import PlaylistStore from '../stores/playlist-store';
+import PlaylistActions from '../actions/playlist-actions';
 
+@connectStores
 class MyPlaylists extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      playlists: [
-        'https://soundcloud.com/devolverdigital/sets/hotline-miami-official',
-        'http://www.youtube.com/playlist?list=PL-jIehwqNsThxWrhoWVGDRIFo2EKcV1Nu'
-      ]
-    };
+  static getStores() {
+    return [PlaylistStore];
+  }
+
+  static getPropsFromStores() {
+     return PlaylistStore.getState();
   }
 
   _validateInput(value) {
@@ -24,12 +26,7 @@ class MyPlaylists extends React.Component {
     const value = React.findDOMNode(this.refs.customPlaylistInput).value;
 
     if (this._validateInput(value)) {
-      let modifiedPlaylists = this.state.playlists;
-      modifiedPlaylists.push(value);
-
-      this.setState({
-        playlists: modifiedPlaylists
-      });
+      PlaylistActions.addPlaylist(value);
 
       // reset input value after adding it playlists
       const input = React.findDOMNode(this.refs.customPlaylistInput);
@@ -40,7 +37,7 @@ class MyPlaylists extends React.Component {
   }
 
   render() {
-    let playlists = this.state.playlists.map((playlist, index) => {
+    let playlists = this.props.playlists.map((playlist, index) => {
       return (
         <a className="my-playlist" key={index} href="#" onClick={() => this.props.onPlaylistChoose(playlist)}>{playlist}</a>
       );
