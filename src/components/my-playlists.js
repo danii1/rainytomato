@@ -36,6 +36,10 @@ class MyPlaylists extends React.Component {
     }
   }
 
+  _handleRemovePlaylistClick(value) {
+    PlaylistActions.deletePlaylist(value);
+  }
+
   render() {
     let playlists = this.props.playlists.map((playlist, index) => {
       let playlistItem;
@@ -47,9 +51,12 @@ class MyPlaylists extends React.Component {
       }
 
       return (
-        <a className="my-playlist" key={index} href="#" onClick={() => this.props.onPlaylistChoose(playlist)}>
-          {playlistItem}
-        </a>
+        <div key={index} className="my-playlist">
+          <a className="playlist-link" onClick={() => this.props.onPlaylistChoose(playlist)}>
+            {playlistItem}
+          </a>
+          <a className="playlist-delete" onClick={() => this._handleRemovePlaylistClick(playlist)}>x</a>
+        </div>
       );
 
     });

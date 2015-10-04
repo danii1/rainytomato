@@ -52,13 +52,24 @@
     width: $playlist-width;
     background-color: $background-color;
 
-    .my-playlist {
-      display: block;
-      padding: $min-padding;
-      word-break: break-all;
 
-      i {
-        width: 30px;
+    .my-playlist {
+      position: relative;
+
+      .playlist-link {
+        display: block;
+        padding: $min-padding $default-padding;
+
+        i {
+          width: 30px;
+        }
+      }
+
+      .playlist-delete {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: $min-padding;
       }
     }
 

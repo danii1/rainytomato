@@ -55,7 +55,7 @@ module.exports = {
       loader: 'babel-loader?optional=es7.decorators&stage=0'
     }, {
       test: /\.(css|scss)$/,
-      loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader!postcss-loader')
+      loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!sass-loader')
     }, {
       test: /\.(png|jpg|otf|eot|svg|ttf|woff|woff2)(\?.+)?$/,
       loader: 'url-loader?limit=8192'

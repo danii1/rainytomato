@@ -69,7 +69,11 @@ class PlaylistStore {
   }
 
   onDeletePlaylist(playlist) {
-    console.log(`delete playlist ${playlist}`);
+    const modifiedPlaylists = this.playlists.filter((savedPlaylist) => {
+      return (savedPlaylist.url !== playlist.url);
+    });
+    this.playlists = modifiedPlaylists;
+    LocalStorageProvider.set('playlists', modifiedPlaylists);
   }
 }
 
