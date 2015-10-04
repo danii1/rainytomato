@@ -40,7 +40,14 @@ class PlaylistStore {
   }
 
   onAddPlaylist(url) {
-    //TODO: check if playlists already contain url
+    const urlAlreadyPresent = this.playlists.some((playlist) => {
+      return playlist.url === url;
+    });
+
+    if (urlAlreadyPresent) {
+      console.log(`Playlist ${url} is already added`);
+      return;
+    }
 
     if (url.indexOf('soundcloud') > -1) {
       // soundcloud
