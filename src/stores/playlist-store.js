@@ -9,8 +9,16 @@ class PlaylistStore {
     if (this.playlists === null) {
       // set default values for now
       this.playlists = [
-        'https://soundcloud.com/devolverdigital/sets/hotline-miami-official',
-        'http://www.youtube.com/playlist?list=PL-jIehwqNsThxWrhoWVGDRIFo2EKcV1Nu'
+        {
+          name: 'devolverdigital - hotline-miami-official',
+          type: 'soundcloud',
+          url: 'https://soundcloud.com/devolverdigital/sets/hotline-miami-official'
+        },
+        {
+          name: 'K-POP',
+          type: 'youtube',
+          url: 'http://www.youtube.com/playlist?list=PL-jIehwqNsThxWrhoWVGDRIFo2EKcV1Nu'
+        }
       ];
     }
 

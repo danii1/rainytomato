@@ -50,15 +50,16 @@
     right: 0;
     bottom: 0;
     width: $playlist-width;
-    background-color: $playlist-color;
-    color: $playlist-text-color;
+    background-color: $background-color;
 
     .my-playlist {
       display: block;
-      color: $playlist-text-color;
-      padding: $default-padding;
-      border-bottom: 1px solid $tomato;
+      padding: $min-padding;
       word-break: break-all;
+
+      i {
+        width: 30px;
+      }
     }
 
     .playlist-add-container {
@@ -76,17 +77,16 @@
         padding: $min-padding;
         border-radius: $border-radius;
         margin-bottom: $default-margin;
+        border: 1px solid $text-color;
       }
 
       .playlist-add {
-        //background-color: $tomato;
         padding: $min-padding;
         display: block;
         width: 100%;
-        border: 1px solid $tomato;
+        background-color: $tomato;
         text-align: center;
         border-radius: $border-radius;
-        color: $tomato;
       }
     }
   }

@@ -38,9 +38,20 @@ class MyPlaylists extends React.Component {
 
   render() {
     let playlists = this.props.playlists.map((playlist, index) => {
+      let playlistItem;
+
+      if (playlist.type === 'soundcloud') {
+        playlistItem = <span className="playlist-name"><i className="fa fa-soundcloud"></i> {playlist.name}</span>;
+      } else {
+        playlistItem = <span className="playlist-name"><i className="fa fa-youtube-play"></i> {playlist.name}</span>;
+      }
+
       return (
-        <a className="my-playlist" key={index} href="#" onClick={() => this.props.onPlaylistChoose(playlist)}>{playlist}</a>
+        <a className="my-playlist" key={index} href="#" onClick={() => this.props.onPlaylistChoose(playlist)}>
+          {playlistItem}
+        </a>
       );
+
     });
     return (
       <div className="my-playlists">
