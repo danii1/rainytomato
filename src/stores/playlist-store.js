@@ -2,6 +2,7 @@ var alt = require('../alt');
 import PlaylistActions from '../actions/playlist-actions';
 import LocalStorageProvider from '../models/local-storage-provider';
 import YoutubeApi from '../api/youtube-api';
+import SoundcloudApi from '../api/soundcloud-api';
 
 class PlaylistStore {
   constructor() {
@@ -27,35 +28,33 @@ class PlaylistStore {
     this.bindActions(PlaylistActions);
   }
 
-  onAddPlaylist(url) {
-    let playlistItem;
+  _pushPlaylistAsync(name, type, url) {
+    const playlistItem = {
+      name: name,
+      type: type,
+      url: url
+    };
+    this.playlists.push(playlistItem);
+    LocalStorageProvider.set('playlists', this.playlists);
+    this.emitChange();
+  }
 
+  onAddPlaylist(url) {
     //TODO: check if playlists already contain url
 
     if (url.indexOf('soundcloud') > -1) {
-      // construct soundcloud object
-      playlistItem = {
-        name: url,
-        type: 'soundcloud',
-        url: url
-      };
-      this.playlists.push(playlistItem);
-      LocalStorageProvider.set('playlists', this.playlists);
+      // soundcloud
+      SoundcloudApi.getPlaylistName(url).then((playlistName) => {
+        this._pushPlaylistAsync(playlistName, 'soundcloud', url);
+      }, (error) => {
+        console.log(`Failed to retrieve soundcloud playlist name for url: ${url}, error:`, error);
+      });
 
     } else {
-      // construct youtube object
+      // youtube
       const playlistId = YoutubeApi.getPlaylistId(url);
       YoutubeApi.getPlaylistName(playlistId).then((playlistName) => {
-        console.log('getPlaylistName resolved', this);
-        playlistItem = {
-          name: playlistName,
-          type: 'youtube',
-          url: url
-        };
-
-        this.playlists.push(playlistItem);
-        LocalStorageProvider.set('playlists', this.playlists);
-        this.emitChange();
+        this._pushPlaylistAsync(playlistName, 'youtube', url);
       }, (error) => {
         console.log(`Failed to retrieve youtube playlist name for url: ${url}, error:`, error);
       });
