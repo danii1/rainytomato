@@ -21,6 +21,7 @@
     "no-extra-semi": 1,
     "no-underscore-dangle": false,
     "no-console": false,
+    "no-debugger": false,
     "no-trailing-spaces": false
   }
 }

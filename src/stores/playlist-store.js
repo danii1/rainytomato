@@ -1,6 +1,7 @@
 var alt = require('../alt');
 import PlaylistActions from '../actions/playlist-actions';
 import LocalStorageProvider from '../models/local-storage-provider';
+import YoutubeApi from '../api/youtube-api';
 
 class PlaylistStore {
   constructor() {
@@ -38,18 +39,27 @@ class PlaylistStore {
         type: 'soundcloud',
         url: url
       };
+      this.playlists.push(playlistItem);
+      LocalStorageProvider.set('playlists', this.playlists);
+
     } else {
       // construct youtube object
-      playlistItem = {
-        name: url,
-        type: 'youtube',
-        url: url
-      };
+      const playlistId = YoutubeApi.getPlaylistId(url);
+      YoutubeApi.getPlaylistName(playlistId).then((playlistName) => {
+        console.log('getPlaylistName resolved', this);
+        playlistItem = {
+          name: playlistName,
+          type: 'youtube',
+          url: url
+        };
+
+        this.playlists.push(playlistItem);
+        LocalStorageProvider.set('playlists', this.playlists);
+        this.emitChange();
+      }, (error) => {
+        console.log(`Failed to retrieve youtube playlist name for url: ${url}, error:`, error);
+      });
     }
-
-
-    this.playlists.push(playlistItem);
-    LocalStorageProvider.set('playlists', this.playlists);
   }
 
   onDeletePlaylist(playlist) {

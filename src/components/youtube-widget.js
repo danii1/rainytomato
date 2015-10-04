@@ -118,6 +118,6 @@ class YoutubeWidget extends React.Component {
   }
 }
 
-YoutubeWidget.propTypes = { playlist: React.PropTypes.string.isRequired };
+//YoutubeWidget.propTypes = { playlist: React.PropTypes.string.isRequired };
 
 export default YoutubeWidget;

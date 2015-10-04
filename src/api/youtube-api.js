@@ -1,3 +1,5 @@
+import Cache from '../models/memory-cache';
+
 export default class YoutubeApi {
   static getPlaylistId(url) {
     let playlistMatches = url.match(/(?:list=)(.+?)(?:\&|$)/);
@@ -8,7 +10,29 @@ export default class YoutubeApi {
     return playlistId;
   }
 
-  static _parseApiResults(response) {
+  static _parsePlaylistName(response) {
+    let json = JSON.parse(response);
+    if (json.items && json.items.length > 0) {
+      return json.items[0].snippet.title;
+    }
+    return null;
+  }
+
+  static getPlaylistName(id) {
+    let apiKey = process.env.YOUTUBE_KEY;
+    let requestUrl = `https://www.googleapis.com/youtube/v3/playlists?part=snippet&id=${id}&key=${apiKey}`;
+
+    return new Promise((resolve, reject) => {
+      YoutubeApi._request(requestUrl).then((result) => {
+        let apiResponse = this._parsePlaylistName(result);
+        resolve(apiResponse);
+      }, (error) => {
+        reject(error);
+      });
+    });
+  }
+
+  static _parsePlaylistContents(response) {
     let json = JSON.parse(response);
     let result = json.items.map((item) => {
       let thumbnail = item.snippet.thumbnails.default.url;
@@ -21,21 +45,16 @@ export default class YoutubeApi {
         thumbnail: thumbnail
       };
     });
+
     return result;
   }
 
-  static getPlaylist(id) {
-    let apiKey = process.env.YOUTUBE_KEY;
-    let requestUrl = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${id}&maxResults=50&key=${apiKey}`;
+  static _request(url) {
     return new Promise((resolve, reject) => {
-      //let result = 'make request to ' + requestUrl;
-
       let request = new XMLHttpRequest();
       request.onload = () => {
         if (request.status === 200) {
-          //console.log(request.response);
-          let result = this._parseApiResults(request.responseText);
-          resolve(result);
+          resolve(request.responseText);
         } else {
           reject(request.responseText);
         }
@@ -43,9 +62,28 @@ export default class YoutubeApi {
       request.onerror = () => {
         reject(request.responseText);
       };
-      request.open('get', requestUrl, true);
+      request.open('get', url, true);
       request.send();
     });
+  }
 
+  static getPlaylist(id) {
+    let apiKey = process.env.YOUTUBE_KEY;
+    let requestUrl = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${id}&maxResults=50&key=${apiKey}`;
+
+    return new Promise((resolve, reject) => {
+      const cachedPlaylist = Cache.get(`playlists/${id}/contents`);
+      if (cachedPlaylist) {
+        resolve(cachedPlaylist);
+      }
+      YoutubeApi._request(requestUrl).then((result) => {
+        let apiResponse = this._parsePlaylistContents(result);
+        // cache playlist to minimize youtube api hits
+        Cache.set(`playlists/${id}/contents`, apiResponse);
+        resolve(apiResponse);
+      }, (error) => {
+        reject(error);
+      });
+    });
   }
 }
