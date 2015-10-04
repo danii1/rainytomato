@@ -2,9 +2,9 @@ import React from 'react';
 import connectStores from 'alt/utils/connectToStores';
 import TimerStore from '../stores/timer-store';
 import TimerActions from '../actions/timer-actions';
-import NotificationManager from '../helpers/notification-manager';
+import NotificationManager from '../models/notification-manager';
 import StringFormatter from '../helpers/string-formatter';
-import {TaskStatus} from '../helpers/tasks';
+import {TaskStatus} from '../models/tasks';
 
 // One task watcher per application, should constantly poll TimerStore
 // for changes

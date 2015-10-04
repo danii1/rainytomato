@@ -1,5 +1,5 @@
 import alt from 'root/alt';
-import { TaskType, TaskStatus } from 'helpers/tasks';
+import { TaskType, TaskStatus } from 'models/tasks';
 //import TimerStore as ts from 'stores/timer-store';
 import DateUtils from 'helpers/date-utils';
 

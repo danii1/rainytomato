@@ -1,6 +1,6 @@
 var alt = require('../alt');
 import PlaylistActions from '../actions/playlist-actions';
-import LocalStorageProvider from '../helpers/local-storage-provider';
+import LocalStorageProvider from '../models/local-storage-provider';
 
 class PlaylistStore {
   constructor() {
@@ -26,8 +26,29 @@ class PlaylistStore {
     this.bindActions(PlaylistActions);
   }
 
-  onAddPlaylist(playlist) {
-    this.playlists.push(playlist);
+  onAddPlaylist(url) {
+    let playlistItem;
+
+    //TODO: check if playlists already contain url
+
+    if (url.indexOf('soundcloud') > -1) {
+      // construct soundcloud object
+      playlistItem = {
+        name: url,
+        type: 'soundcloud',
+        url: url
+      };
+    } else {
+      // construct youtube object
+      playlistItem = {
+        name: url,
+        type: 'youtube',
+        url: url
+      };
+    }
+
+
+    this.playlists.push(playlistItem);
     LocalStorageProvider.set('playlists', this.playlists);
   }
 

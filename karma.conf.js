@@ -57,6 +57,7 @@ module.exports = function (config) {
           'sounds': path.join(process.cwd(), '/src/assets/sounds'),
           'components': path.join(process.cwd(), './src/components/'),
           'routes': path.join(process.cwd(), './src/routes/'),
+          'models': path.join(process.cwd(), './src/models/'),
           'helpers': path.join(process.cwd(), './src/helpers/'),
           'stores':  path.join(process.cwd(), './src/stores/'),
           'actions': path.join(process.cwd(), './src/actions/'),

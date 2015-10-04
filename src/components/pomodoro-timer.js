@@ -1,6 +1,6 @@
-import SoundManager from '../helpers/sound-manager';
+import SoundManager from '../models/sound-manager';
+import { TaskStatus, TaskType } from '../models/tasks';
 import StringFormatter from '../helpers/string-formatter';
-import { TaskStatus, TaskType } from '../helpers/tasks';
 import React from 'react';
 import connectStores from 'alt/utils/connectToStores';
 import TimerStore from '../stores/timer-store';

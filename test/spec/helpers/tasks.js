@@ -1,4 +1,4 @@
-import { TaskQueueBuilder, TaskType } from 'helpers/tasks';
+import { TaskQueueBuilder, TaskType } from 'models/tasks';
 
 describe('TaskQueueBuilder', () => {
   describe('build', () => {

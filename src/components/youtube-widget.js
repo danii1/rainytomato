@@ -1,6 +1,6 @@
 import React from 'react';
 import YouTube from 'react-youtube';
-import YoutubeApi from '../helpers/youtube-api';
+import YoutubeApi from '../api/youtube-api';
 
 class YoutubeWidget extends React.Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 var alt = require('../alt');
 import TimerActions from '../actions/timer-actions';
 import DateUtils from '../helpers/date-utils';
-import { TaskType, TaskStatus, TaskInterval, TaskBuilder, TaskQueueBuilder } from '../helpers/tasks';
+import { TaskType, TaskStatus, TaskInterval, TaskBuilder, TaskQueueBuilder } from '../models/tasks';
 
 class TimerStore {
   constructor() {
