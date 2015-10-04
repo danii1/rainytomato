@@ -24,7 +24,7 @@ class SoundcloudWidget extends React.Component {
   }
 
   render() {
-    let escapedPlaylistUrl = StringFormatter.escapeUri(this.props.playlist);
+    let escapedPlaylistUrl = StringFormatter.escapeUri(this.props.playlist.url);
     let playlistWidgetUrl = `https://w.soundcloud.com/player/?url=${escapedPlaylistUrl}&auto_play=false&hide_related=true&show_user=true&show_reposts=false&visual=false&show_comments=false`;
     return (
       <div className="soundcloud-widget" >

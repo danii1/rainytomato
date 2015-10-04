@@ -6,7 +6,7 @@ class YoutubeWidget extends React.Component {
   constructor(props) {
     super(props);
 
-    let playlistId = YoutubeApi.getPlaylistId(props.playlist);
+    let playlistId = YoutubeApi.getPlaylistId(props.playlist.url);
 
     this.state = {
       playlistId: playlistId,
@@ -102,7 +102,7 @@ class YoutubeWidget extends React.Component {
       <div className="youtube-widget">
         <div className="video">
           <YouTube
-            url={this.props.playlist}
+            url={this.props.playlist.url}
             opts={opts}
             onReady={(event) => this.onReady(event)}
             onPlay={(event) => this.onPlay(event)}

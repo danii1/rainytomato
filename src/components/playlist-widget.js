@@ -21,9 +21,9 @@ class PlaylistWidget extends React.Component {
     const playlist = this.state.playlist;
     let playlistElement;
     if (playlist) {
-      if (playlist.indexOf('soundcloud') > -1) {
+      if (playlist.type === 'soundcloud') {
         playlistElement = <SoundcloudWidget {...this.state}/>;
-      } else if (playlist.indexOf('youtu') > -1) {
+      } else if (playlist.type === 'youtube') {
         playlistElement = <YoutubeWidget {...this.state} />;
       } else {
         playlistElement = <MyPlaylists onPlaylistChoose={::this.handlePlaylistChange}/>;
