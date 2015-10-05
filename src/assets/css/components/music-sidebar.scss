@@ -54,7 +54,7 @@
     right: 0;
     bottom: 0;
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+    //-webkit-overflow-scrolling: touch;
     width: $playlist-width;
     background-color: $background-color;
   }
@@ -92,7 +92,7 @@
       top: 0;
       bottom: 120px;
       overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
+      //-webkit-overflow-scrolling: touch;
     }
 
     .my-playlist {
