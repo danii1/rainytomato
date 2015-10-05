@@ -24,8 +24,9 @@ class MusicSidebar extends React.Component {
   }
 
   render() {
-    const playlist = this.state.playlist;
-    let playlistElement, sidebarHeader;
+    let playlist = this.state.playlist;
+    let playlistElement = null;
+    let sidebarHeader = null;
     if (playlist) {
       sidebarHeader = <div className="sidebar-header sidebar-playlist-header">
         <a className="sidebar-header-link" onClick={::this.handleResetPlaylist}>
@@ -36,9 +37,9 @@ class MusicSidebar extends React.Component {
         </a>
       </div>;
       if (playlist.type === 'soundcloud') {
-        playlistElement = <SoundcloudWidget {...this.state}/>;
+        playlistElement = <SoundcloudWidget playlist={this.state.playlist.url}/>;
       } else if (playlist.type === 'youtube') {
-        playlistElement = <YoutubeWidget {...this.state} />;
+        playlistElement = <YoutubeWidget playlist={this.state.playlist.url} />;
       }
     } else {
       sidebarHeader = <div className="sidebar-header">My playlists</div>;
