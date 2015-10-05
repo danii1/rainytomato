@@ -75,15 +75,16 @@ export default class YoutubeApi {
       const cachedPlaylist = Cache.get(`playlists/${id}/contents`);
       if (cachedPlaylist) {
         resolve(cachedPlaylist);
+      } else {
+        YoutubeApi._request(requestUrl).then((result) => {
+          let apiResponse = this._parsePlaylistContents(result);
+          // cache playlist to minimize youtube api hits
+          Cache.set(`playlists/${id}/contents`, apiResponse);
+          resolve(apiResponse);
+        }, (error) => {
+          reject(error);
+        });  
       }
-      YoutubeApi._request(requestUrl).then((result) => {
-        let apiResponse = this._parsePlaylistContents(result);
-        // cache playlist to minimize youtube api hits
-        Cache.set(`playlists/${id}/contents`, apiResponse);
-        resolve(apiResponse);
-      }, (error) => {
-        reject(error);
-      });
     });
   }
 }

@@ -8,7 +8,7 @@ import { RouteHandler } from 'react-router';
 import Navbar from 'components/navbar';
 import BackgroundBox from 'components/background-box';
 import TaskWatcher from 'components/task-watcher';
-import PlaylistWidget from 'components/playlist-widget';
+import MusicSidebar from 'components/music-sidebar';
 
 export default React.createClass({
   render() {
@@ -20,7 +20,7 @@ export default React.createClass({
         <div className="content">
           <RouteHandler />
         </div>
-        <PlaylistWidget />
+        <MusicSidebar />
         <TaskWatcher />
       </div>
     );

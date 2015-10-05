@@ -20,7 +20,7 @@ class SoundcloudWidget extends React.Component {
 
   _adjustWidgetHeight() {
     let widgetIframe = React.findDOMNode(this.refs.playlist);
-    widgetIframe.height = document.body.clientHeight;
+    widgetIframe.height = document.body.clientHeight - 4 * 16;
   }
 
   render() {

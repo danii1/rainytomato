@@ -1,6 +1,6 @@
 // sidebar on low resolutions
 .music-sidebar-open {
-  .my-playlists, .playlist, .video, .soundcloud-widget {
+  .sidebar-header, .my-playlists, .playlist, .video, .soundcloud-widget {
     transform: translateX(0px);
     transition: transform .2s ease-in-out;
     z-index: 10000;

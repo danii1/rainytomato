@@ -3,7 +3,7 @@ import YoutubeWidget from './youtube-widget';
 import SoundcloudWidget from './soundcloud-widget';
 import MyPlaylists from './my-playlists';
 
-class PlaylistWidget extends React.Component {
+class MusicSidebar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,27 +17,41 @@ class PlaylistWidget extends React.Component {
     });
   }
 
+  handleResetPlaylist() {
+    this.setState({
+      playlist: null
+    });
+  }
+
   render() {
     const playlist = this.state.playlist;
-    let playlistElement;
+    let playlistElement, sidebarHeader;
     if (playlist) {
+      sidebarHeader = <div className="sidebar-header sidebar-playlist-header">
+        <a className="sidebar-header-link" onClick={::this.handleResetPlaylist}>
+          <div className="sidebar-title">
+            <i className="fa fa-arrow-left"></i>
+            <span>{playlist.name}</span>
+          </div>
+        </a>
+      </div>;
       if (playlist.type === 'soundcloud') {
         playlistElement = <SoundcloudWidget {...this.state}/>;
       } else if (playlist.type === 'youtube') {
         playlistElement = <YoutubeWidget {...this.state} />;
-      } else {
-        playlistElement = <MyPlaylists onPlaylistChoose={::this.handlePlaylistChange}/>;
       }
     } else {
+      sidebarHeader = <div className="sidebar-header">My playlists</div>;
       playlistElement = <MyPlaylists onPlaylistChoose={::this.handlePlaylistChange}/>;
     }
 
     return (
-      <div className="playlist-widget">
+      <div className="music-sidebar">
+        {sidebarHeader}
         {playlistElement}
       </div>
     );
   }
 }
 
-export default PlaylistWidget;
+export default MusicSidebar;

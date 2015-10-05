@@ -45,9 +45,9 @@ class MyPlaylists extends React.Component {
       let playlistItem;
 
       if (playlist.type === 'soundcloud') {
-        playlistItem = <span className="playlist-name"><i className="fa fa-soundcloud"></i> {playlist.name}</span>;
+        playlistItem = <span className="playlist-name"><i className="fa fa-soundcloud"></i>{playlist.name}</span>;
       } else {
-        playlistItem = <span className="playlist-name"><i className="fa fa-youtube-play"></i> {playlist.name}</span>;
+        playlistItem = <span className="playlist-name"><i className="fa fa-youtube-play"></i>{playlist.name}</span>;
       }
 
       return (
@@ -55,14 +55,14 @@ class MyPlaylists extends React.Component {
           <a className="playlist-link" onClick={() => this.props.onPlaylistChoose(playlist)}>
             {playlistItem}
           </a>
-          <a className="playlist-delete" onClick={() => this._handleRemovePlaylistClick(playlist)}>x</a>
+          <a className="playlist-delete" onClick={() => this._handleRemovePlaylistClick(playlist)}><i className="fa fa-close"></i></a>
         </div>
       );
 
     });
     return (
       <div className="my-playlists">
-        <div>{playlists}</div>
+        <div className="playlists-container">{playlists}</div>
         <div className="playlist-add-container">
           <input className="playlist-input" ref="customPlaylistInput" type="text" />
           <a href="#" className="playlist-add" onClick={::this._handleAddPlaylistClick}>Add playlist</a>
