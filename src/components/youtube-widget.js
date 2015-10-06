@@ -99,7 +99,7 @@ class YoutubeWidget extends React.Component {
 
         }
         return (
-          <a key={index} className={playlistClasses} href="#" onClick={() => this._handlePlaylistItemClick(index)}>
+          <a key={index} className={playlistClasses} onClick={() => this._handlePlaylistItemClick(index)}>
             {playbackStatus}
             <div className="title">{playlistItem.title}</div>
           </a>

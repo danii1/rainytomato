@@ -3,6 +3,7 @@ import React from 'react';
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
+    //this._handleMenuToggle();
   }
 
   _handleMenuToggle() {
@@ -26,16 +27,16 @@ class Navbar extends React.Component {
     return (
       <nav className="navbar">
         <span className="title">
-          <a href="#" onClick={::this._handleMenuToggle}>
+          <a onClick={::this._handleMenuToggle}>
             <i className="fa fa-bars"></i> Rainy Tomato
           </a>
         </span>
         <span className="nav-links">
-          <a href="#" onClick={::this._handleMusicToggle}>
+          <a onClick={::this._handleMusicToggle}>
             <i className="fa fa-music" />
           </a>
         </span>
-        <a href="#" onClick={::this._handleOverlayClick} className="overlay">
+        <a onClick={::this._handleOverlayClick} className="overlay">
         </a>
       </nav>
     );

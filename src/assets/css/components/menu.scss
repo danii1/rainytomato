@@ -6,6 +6,7 @@
   bottom: 0;
   z-index: 5000;
 
+
   transform: translateX(-1 * $playlist-width);
   transition: transform .2s ease-in-out;
 
@@ -13,6 +14,29 @@
     line-height: $sidebar-height;
     padding: 0 $default-padding;
     font-size: $navbar-font-size;
+  }
+
+  .menu-contents {
+    .menu-item.active {
+      background-color: $highlight-background-color;
+    }
+
+    .menu-item {
+      width: 100%;
+      padding: $default-padding $default-padding;
+      display: block;
+
+      .menu-item-text {
+        padding-left: $min-padding;
+        display: inline-block;
+        font-size: $menu-item-font-size;
+      }
+
+      i {
+        font-size: $navbar-font-size;
+        vertical-align: middle;
+      }
+    }
   }
 
 }

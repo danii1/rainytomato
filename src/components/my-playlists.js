@@ -65,7 +65,7 @@ class MyPlaylists extends React.Component {
         <div className="playlists-container">{playlists}</div>
         <div className="playlist-add-container">
           <input className="playlist-input" ref="customPlaylistInput" type="text" />
-          <a href="#" className="playlist-add" onClick={::this._handleAddPlaylistClick}>Add playlist</a>
+          <a className="playlist-add" onClick={::this._handleAddPlaylistClick}>Add playlist</a>
         </div>
       </div>
     );
