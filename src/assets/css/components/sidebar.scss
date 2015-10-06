@@ -1,38 +1,48 @@
-// sidebar on low resolutions
+.sidebar-header, .my-playlists, .playlist, .video, .soundcloud-widget {
+  z-index: 10000;
+}
+
+// overlay on low resolutions
+.music-sidebar-open .overlay, .menu-open .overlay {
+  display: block;
+}
+
+// do not show overlay on higher resolutions
+@media (min-width: 650px) {
+  .music-sidebar-open .overlay, .menu-open .overlay {
+    display: none;
+  }
+}
+
+.menu-open {
+  .menu {
+    transform: translateX(0px);
+    transition: transform .2s ease-in-out;
+  }
+}
+
+// music sidebar on low resolutions
 .music-sidebar-open {
   .sidebar-header, .my-playlists, .playlist, .video, .soundcloud-widget {
     transform: translateX(0px);
     transition: transform .2s ease-in-out;
-    z-index: 10000;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
-  .overlay {
-    display: block;
   }
 }
 
 // sidebar on higher resolutions
 @media (min-width: 650px) {
   .music-sidebar-open {
-    .nav-links {
-      display: block;
-    }
-
     .navbar, .content {
       right: $playlist-width;
     }
+  }
 
-    .overlay {
-      display: none;
-    }
+  .menu-open .content {
+    left: $playlist-width;
   }
 
   .navbar, .content {
-    transition: right .2s ease-in-out;
+    transition: left .2s ease-in-out, right .2s ease-in-out;
   }
 }
 

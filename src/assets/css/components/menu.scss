@@ -1,0 +1,18 @@
+.menu {
+  position: fixed;
+  width: $playlist-width;
+  background-color: $background-color;
+  top: 0;
+  bottom: 0;
+  z-index: 5000;
+
+  transform: translateX(-1 * $playlist-width);
+  transition: transform .2s ease-in-out;
+
+  .menu-header {
+    line-height: $sidebar-height;
+    padding: 0 $default-padding;
+    font-size: $navbar-font-size;
+  }
+
+}

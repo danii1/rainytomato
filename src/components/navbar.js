@@ -3,29 +3,39 @@ import React from 'react';
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
-    //this._handleMusicToggle();
+  }
+
+  _handleMenuToggle() {
+    const element = document.getElementById('react');
+    let menuOpen = element.className === 'menu-open';
+    element.className = !menuOpen ? 'menu-open' : '';
   }
 
   _handleMusicToggle() {
-    this.musicSidebarOpen = !this.musicSidebarOpen;
     const element = document.getElementById('react');
-    if (this.musicSidebarOpen) {
-      element.className = 'music-sidebar-open';
-    } else {
-      element.className = '';
-    }
+    let sidebarOpen = element.className === 'music-sidebar-open';
+    element.className = !sidebarOpen ? 'music-sidebar-open' : '';
+  }
+
+  _handleOverlayClick() {
+    const element = document.getElementById('react');
+    element.className = '';
   }
 
   render() {
     return (
       <nav className="navbar">
-        <span className="title">Rainy Tomato</span>
+        <span className="title">
+          <a href="#" onClick={::this._handleMenuToggle}>
+            <i className="fa fa-bars"></i> Rainy Tomato
+          </a>
+        </span>
         <span className="nav-links">
           <a href="#" onClick={::this._handleMusicToggle}>
             <i className="fa fa-music" />
           </a>
         </span>
-        <a href="#" onClick={::this._handleMusicToggle} className="overlay">
+        <a href="#" onClick={::this._handleOverlayClick} className="overlay">
         </a>
       </nav>
     );

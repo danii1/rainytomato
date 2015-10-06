@@ -9,6 +9,7 @@ import Navbar from 'components/navbar';
 import BackgroundBox from 'components/background-box';
 import TaskWatcher from 'components/task-watcher';
 import MusicSidebar from 'components/music-sidebar';
+import Menu from 'components/menu';
 
 export default React.createClass({
   render() {
@@ -20,6 +21,7 @@ export default React.createClass({
         <div className="content">
           <RouteHandler />
         </div>
+        <Menu />
         <MusicSidebar />
         <TaskWatcher />
       </div>
