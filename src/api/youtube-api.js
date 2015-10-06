@@ -18,7 +18,8 @@ export default class YoutubeApi {
     return null;
   }
 
-  static getPlaylistName(id) {
+  static getPlaylistName(url) {
+    const id = YoutubeApi.getPlaylistId(url);
     let apiKey = process.env.YOUTUBE_KEY;
     let requestUrl = `https://www.googleapis.com/youtube/v3/playlists?part=snippet&id=${id}&key=${apiKey}`;
 
@@ -45,7 +46,6 @@ export default class YoutubeApi {
         thumbnail: thumbnail
       };
     });
-
     return result;
   }
 
@@ -67,7 +67,8 @@ export default class YoutubeApi {
     });
   }
 
-  static getPlaylist(id) {
+  static getPlaylist(url) {
+    const id = YoutubeApi.getPlaylistId(url);
     let apiKey = process.env.YOUTUBE_KEY;
     let requestUrl = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${id}&maxResults=50&key=${apiKey}`;
 
@@ -78,12 +79,13 @@ export default class YoutubeApi {
       } else {
         YoutubeApi._request(requestUrl).then((result) => {
           let apiResponse = this._parsePlaylistContents(result);
+
           // cache playlist to minimize youtube api hits
           Cache.set(`playlists/${id}/contents`, apiResponse);
           resolve(apiResponse);
         }, (error) => {
           reject(error);
-        });  
+        });
       }
     });
   }

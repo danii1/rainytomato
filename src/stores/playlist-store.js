@@ -59,8 +59,7 @@ class PlaylistStore {
 
     } else {
       // youtube
-      const playlistId = YoutubeApi.getPlaylistId(url);
-      YoutubeApi.getPlaylistName(playlistId).then((playlistName) => {
+      YoutubeApi.getPlaylistName(url).then((playlistName) => {
         this._pushPlaylistAsync(playlistName, 'youtube', url);
       }, (error) => {
         console.log(`Failed to retrieve youtube playlist name for url: ${url}, error:`, error);
