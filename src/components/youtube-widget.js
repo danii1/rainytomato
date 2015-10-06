@@ -45,6 +45,7 @@ class YoutubeWidget extends React.Component {
         return item.videoId;
       });
       this.player.cuePlaylist(videoUrls);
+      this.player.setLoop(true);
     }
   }
 
