@@ -9,3 +9,30 @@
 .about-route, .settings-route {
   padding: $default-padding;
 }
+
+.settings-route .tab-box {
+  margin-top: $navbar-height;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  .tabs {
+    width: 100%;
+  }
+
+  .tab-content {
+    padding: $default-padding;
+  }
+
+  .tab {
+    padding: $default-padding;
+    display: inline-block;
+    width: 5rem;
+    text-align: center;
+  }
+
+  .tab.active {
+    border-bottom: 2px solid $tomato;
+  }
+
+}
