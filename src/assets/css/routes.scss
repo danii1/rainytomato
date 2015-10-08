@@ -11,10 +11,11 @@
 }
 
 .settings-route .tab-box {
-  margin-top: $navbar-height;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  max-width: 500px;
+  margin: $navbar-height auto auto auto;
 
   .tabs {
     width: 100%;

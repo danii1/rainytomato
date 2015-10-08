@@ -1,0 +1,20 @@
+.timer-settings {
+  label {
+    display: block;
+    margin-bottom: $default-margin * 2;
+  }
+
+  .slider-value {
+    float: right;
+  }
+
+  .noUi-target {
+    margin-top: $default-margin;
+  }
+
+  // override noUi-slider style, so handlers stay within slider
+  .noUi-horizontal { padding-right: 32px; }
+  .noUi-handle { left: -1px; }
+  .noUi-origin  { right: -32px; }
+
+}

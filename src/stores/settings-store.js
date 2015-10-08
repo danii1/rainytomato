@@ -23,7 +23,6 @@ class SettingsStore {
   }
 
   onSaveSettings(settings) {
-    console.log('save settings called', settings);
     this.settings = settings;
     LocalStorageProvider.set('settings', settings);
   }
