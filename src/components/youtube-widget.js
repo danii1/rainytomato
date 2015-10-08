@@ -1,8 +1,19 @@
 import React from 'react';
 import YouTube from 'react-youtube';
 import YoutubeApi from '../api/youtube-api';
+import connectStores from 'alt/utils/connectToStores';
+import SettingsStore from '../stores/settings-store';
 
+@connectStores
 class YoutubeWidget extends React.Component {
+  static getStores() {
+    return [SettingsStore];
+  }
+
+  static getPropsFromStores() {
+     return SettingsStore.getState();
+  }
+
   constructor(props) {
     super(props);
 
@@ -107,8 +118,13 @@ class YoutubeWidget extends React.Component {
       });
     }
 
+    let widgetClasses = 'youtube-widget';
+    if (this.props.settings.ui.hideYoutubeVideo) {
+      widgetClasses += ' hide-video';
+    }
+
     return (
-      <div className="youtube-widget">
+      <div className={widgetClasses}>
         <div className="video">
           <YouTube
             opts={opts}

@@ -40,6 +40,16 @@
     background-color: #f5f5f5;;
   }
 
+  .hide-video {
+    .video {
+      display: none;
+    }
+
+    .playlist {
+      top: 16px * 4;
+    }
+  }
+
   .video {
     position: fixed;
     top: $sidebar-height;
