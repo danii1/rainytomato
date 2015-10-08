@@ -14,7 +14,7 @@ export default class StringFormatter {
     let secs = Math.round(time / 1000 % 60).toString();
 
     // correct js timer
-    if (secs === 60) {
+    if (secs >= 60) {
       secs = 59;
     }
 

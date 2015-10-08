@@ -1,13 +1,22 @@
 var alt = require('../alt');
 import TimerActions from '../actions/timer-actions';
 import DateUtils from '../helpers/date-utils';
-import { TaskType, TaskStatus, TaskInterval, TaskBuilder, TaskQueueBuilder } from '../models/tasks';
+import { TaskType, TaskStatus, TaskBuilder, TaskQueueBuilder } from '../models/tasks';
+import SettingsStore from './settings-store.js';
 
 class TimerStore {
   constructor() {
-    this.tasks = TaskQueueBuilder.build(4);
+    //TODO: refactor this
+    const timerSettings = SettingsStore.loadSettings().timer;
+
+    this.tasks = TaskQueueBuilder.build(
+      timerSettings.workTasksLength,
+      timerSettings.shortBreakInterval * 60 * 1000,
+      timerSettings.longBreakInterval * 60 * 1000
+    );
+
     this.currentTaskIndex = 0;
-    this.timeLeft = TaskInterval.WORK;
+    this.timeLeft = this.currentTask.duration;
     this.bindActions(TimerActions);
   }
 
@@ -75,7 +84,20 @@ class TimerStore {
       timeLeft = this.currentTask.duration;
     }
     this.setState({ timeLeft: timeLeft });
+  }
 
+  onResetTimerTasks() {
+    this.waitFor(SettingsStore);
+    const timerSettings = SettingsStore.getState().settings.timer;
+
+    this.tasks = TaskQueueBuilder.build(
+      timerSettings.workTasksLength,
+      timerSettings.shortBreakInterval * 60 * 1000,
+      timerSettings.longBreakInterval * 60 * 1000
+    );
+
+    this.currentTaskIndex = 0;
+    this.timeLeft = this.currentTask.duration;
   }
 
 }

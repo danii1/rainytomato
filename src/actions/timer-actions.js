@@ -1,12 +1,8 @@
 import alt from '../alt';
 
 class TimerActions {
-  switchTimer() {
-    this.dispatch();
-  }
-
-  checkTimer() {
-    this.dispatch();
+  constructor() {
+    this.generateActions('checkTimer', 'switchTimer', 'resetTimerTasks');
   }
 }
 

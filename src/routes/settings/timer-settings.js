@@ -3,6 +3,7 @@ import Slider from 'react-nouislider';
 import connectStores from 'alt/utils/connectToStores';
 import SettingsStore from '../../stores/settings-store';
 import SettingsActions from '../../actions/settings-actions';
+import TimerActions from '../../actions/timer-actions';
 
 @connectStores
 class TimerSettings extends React.Component {
@@ -46,7 +47,10 @@ class TimerSettings extends React.Component {
         settings.timer.longBreakInterval = Math.round(value);
         break;
     }
+
+    // save timer settings and apply new settings to the current timer
     SettingsActions.saveSettings(settings);
+    TimerActions.resetTimerTasks();
   }
 
   render() {

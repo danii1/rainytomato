@@ -33,26 +33,26 @@ class BaseTask {
 }
 
 class WorkTask extends BaseTask {
-  constructor() {
+  constructor(duration = TaskInterval.WORK) {
     super();
     this.type = TaskType.WORK;
-    this.duration = TaskInterval.WORK;
+    this.duration = duration;
   }
 }
 
 class ShortBreakTask extends BaseTask {
-  constructor() {
+  constructor(duration = TaskInterval.SHORT_BREAK) {
     super();
     this.type = TaskType.SHORT_BREAK;
-    this.duration = TaskInterval.SHORT_BREAK;
+    this.duration = duration;
   }
 }
 
 class LongBreakTask extends BaseTask {
-  constructor() {
+  constructor(duration = TaskInterval.LONG_BREAK) {
     super();
     this.type = TaskType.LONG_BREAK;
-    this.duration = TaskInterval.LONG_BREAK;
+    this.duration = duration;
   }
 }
 
@@ -73,7 +73,7 @@ class TaskBuilder {
 
 
 class TaskQueueBuilder {
-  static build(setLength) {
+  static build(setLength, shortBreakDuration, longBreakDuration) {
     if (typeof setLength !== 'number') {
       throw new TypeError(`setLength parameter should be number, got ${setLength} instead`);
     }
@@ -88,9 +88,9 @@ class TaskQueueBuilder {
       queue.push(new WorkTask());
 
       if (i === setLength - 1) {
-        queue.push(new LongBreakTask());
+        queue.push(new LongBreakTask(longBreakDuration));
       } else {
-        queue.push(new ShortBreakTask());
+        queue.push(new ShortBreakTask(shortBreakDuration));
       }
     }
 

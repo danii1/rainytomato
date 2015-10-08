@@ -4,10 +4,17 @@ import LocalStorageProvider from '../models/local-storage-provider';
 
 class SettingsStore {
   constructor() {
-    this.settings = LocalStorageProvider.get('settings');
+    this.settings = SettingsStore.loadSettings();
+    this.bindActions(SettingsActions);
+  }
 
-    if (this.settings === null) {
-      this.settings = {
+
+  static loadSettings() {
+    let settings = LocalStorageProvider.get('settings');
+
+    // provide default settings, if settings are not in localStorage
+    if (settings === null) {
+      settings = {
         timer: {
           shortBreakInterval: 5,
           longBreakInterval: 15,
@@ -19,7 +26,7 @@ class SettingsStore {
       };
     }
 
-    this.bindActions(SettingsActions);
+    return settings;
   }
 
   onSaveSettings(settings) {
