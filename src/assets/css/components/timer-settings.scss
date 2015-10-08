@@ -13,8 +13,30 @@
   }
 
   // override noUi-slider style, so handlers stay within slider
-  .noUi-horizontal { padding-right: 32px; }
-  .noUi-handle { left: -1px; }
-  .noUi-origin  { right: -32px; }
+  //.noUi-horizontal { padding-right: 32px; }
+  //.noUi-handle { left: -1px; }
+  //.noUi-origin  { right: -32px; }
 
+  // noUi slider
+  .noUi-horizontal {
+    height: 8px;
+  }
+
+  .noUi-connect, .noUi-horizontal, .noUi-background {
+    box-shadow: none;
+  }
+
+  $handle-size: 20px;
+
+  .noUi-horizontal .noUi-handle {
+    border-radius: 100px;
+    width: $handle-size;
+    height: $handle-size;
+    top: -7px;
+    left: -1 * $handle-size / 2;
+  }
+
+  .noUi-handle::before, .noUi-handle::after {
+    content: none;
+  }
 }
