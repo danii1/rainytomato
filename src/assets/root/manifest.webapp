@@ -12,5 +12,10 @@
   },
   "type": "privileged",
   "default_locale": "en",
-  "fullscreen": "true"
+  "fullscreen": "true",
+  "permissions": {
+    "systemXHR": {
+      "description": "Required to get playlists from remote sources"
+    }
+  }
 }
