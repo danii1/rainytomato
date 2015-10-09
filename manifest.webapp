@@ -1,0 +1,16 @@
+{
+  "name": "Rainy Tomato",
+  "description": "",
+  "version": "0.0.1",
+  "launch_path": "/index.html",
+  "installs_allowed_from": ["https://marketplace.firefox.com"],
+  "icons": {
+    "128": "/img/icon-128.png"
+  },
+  "developer": {
+    "name": "Daniil Pokrovsky"
+  },
+  "type": "web",
+  "default_locale": "en",
+  "fullscreen": "true"
+}
