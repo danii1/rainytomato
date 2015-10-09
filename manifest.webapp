@@ -3,7 +3,7 @@
   "description": "",
   "version": "0.0.1",
   "launch_path": "/index.html",
-  "installs_allowed_from": ["https://marketplace.firefox.com"],
+  "installs_allowed_from": ["https://marketplace.firefox.com", "http://rainytomato.xyz"],
   "icons": {
     "128": "/img/icon-128.png"
   },
