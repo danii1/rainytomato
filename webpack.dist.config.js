@@ -68,7 +68,8 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-          'YOUTUBE_KEY': JSON.stringify(process.env.RAINY_TOMATO_YOUTUBE_KEY)
+          'YOUTUBE_KEY': JSON.stringify(process.env.RAINY_TOMATO_YOUTUBE_KEY),
+          'NODE_ENV': JSON.stringify('production')
        }
     }),
     new webpack.ProvidePlugin({
