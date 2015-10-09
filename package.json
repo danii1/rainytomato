@@ -18,8 +18,8 @@
     "launch": "(sleep 1 && npm run browser) & npm run server",
     "clean": "rm -rf ./dist",
     "build": "rm -rf ./dist && ./node_modules/.bin/webpack --config webpack.dist.config.js",
-    "build:firefox": "npm run build && cp ./src/assets/root/manifest.webapp ./dist/",
-    "deploy": "rm -rf ./dist && npm run build && cp ./src/assets/root/CNAME ./dist/ && node ./publish.js"
+    "prepare:root": "cp ./src/assets/root/* ./dist/",
+    "deploy": "rm -rf ./dist && npm run build && npm run prepare:root && node ./publish.js"
   },
   "homepage": "https://github.com/danii1/rainytomato",
   "repository": {

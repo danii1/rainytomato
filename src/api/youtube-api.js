@@ -51,7 +51,7 @@ export default class YoutubeApi {
 
   static _request(url) {
     return new Promise((resolve, reject) => {
-      let request = new XMLHttpRequest({ mozSystem: true });
+      let request = new XMLHttpRequest();
       request.onload = () => {
         if (request.status === 200) {
           resolve(request.responseText);
