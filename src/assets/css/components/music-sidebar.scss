@@ -105,6 +105,27 @@
       //-webkit-overflow-scrolling: touch;
     }
 
+    .empty-playlists {
+      padding: $default-padding;
+      line-height: 1.5;
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding-left: $min-padding;
+
+        li {
+          padding: $min-padding 0 0 0;
+          word-break: break-all;
+
+          a {
+            color: $tomato;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
     .my-playlist {
       position: relative;
 
@@ -120,8 +141,9 @@
             width: 30px;
           }
 
-          span {
+          >span {
             display: table-cell;
+            width: 250px;
           }
         }
       }
@@ -131,6 +153,7 @@
         top: $min-padding;
         right: $default-padding;
       }
+
     }
 
     .playlist-add-container {

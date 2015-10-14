@@ -46,6 +46,11 @@ class MyPlaylists extends React.Component {
     PlaylistActions.deletePlaylist(value);
   }
 
+  _pasteLink(url) {
+    const input = React.findDOMNode(this.refs.customPlaylistInput);
+    input.value = url;
+  }
+
   render() {
     let playlists = this.props.playlists.map((playlist, index) => {
       let playlistItem;
@@ -64,13 +69,27 @@ class MyPlaylists extends React.Component {
           <a className="playlist-delete" onClick={() => this._handleRemovePlaylistClick(playlist)}><i className="fa fa-close"></i></a>
         </div>
       );
-
     });
+
+    if (playlists.length === 0) {
+      playlists = <div className="empty-playlists">
+        You collection is empty, add some playlists from YouTube or SoundCloud, for ex:
+        <ul>
+          <li>
+            <a className="selectable" onClick={() => this._pasteLink('http://www.youtube.com/playlist?list=PL-jIehwqNsThxWrhoWVGDRIFo2EKcV1Nu')}>http://www.youtube.com/playlist?list=PL-jIehwqNsThxWrhoWVGDRIFo2EKcV1Nu</a>
+          </li>
+          <li>
+            <a className="selectable" onClick={() => this._pasteLink('https://soundcloud.com/devolverdigital/sets/hotline-miami-official')}>https://soundcloud.com/devolverdigital/sets/hotline-miami-official</a>
+          </li>
+        </ul>
+      </div>;
+    }
+
     return (
       <div className="my-playlists">
         <div className="playlists-container">{playlists}</div>
         <div className="playlist-add-container">
-          <input className="playlist-input" ref="customPlaylistInput" type="text" onKeyUp={::this._handleKeyPress} />
+          <input placeholder="Paste playlist url" className="playlist-input" ref="customPlaylistInput" type="text" onKeyUp={::this._handleKeyPress} />
           <a className="playlist-add" onClick={::this._handleAddPlaylistClick}>Add playlist</a>
         </div>
       </div>

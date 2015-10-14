@@ -6,6 +6,10 @@
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
+.selectable {
+  user-select: text;
+}
+
 html, body {
   background: $background-color;
   color: $text-color;

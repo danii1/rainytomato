@@ -9,19 +9,7 @@ class PlaylistStore {
     this.playlists = LocalStorageProvider.get('playlists');
 
     if (this.playlists === null) {
-      // set default values for now
-      this.playlists = [
-        {
-          name: 'devolverdigital - hotline-miami-official',
-          type: 'soundcloud',
-          url: 'https://soundcloud.com/devolverdigital/sets/hotline-miami-official'
-        },
-        {
-          name: 'K-POP',
-          type: 'youtube',
-          url: 'http://www.youtube.com/playlist?list=PL-jIehwqNsThxWrhoWVGDRIFo2EKcV1Nu'
-        }
-      ];
+      this.playlists = [];
     }
 
     this.chosenPlaylist = null;
