@@ -1,0 +1,17 @@
+{
+  "name": "Rainy Tomato",
+  "description": "Elegant Pomodoro timer",
+  "version": "1.0.0",
+  "launch_path": "/app/index.html",
+  "installs_allowed_from": ["https://marketplace.firefox.com", "http://rainytomato.xyz"],
+  "icons": {
+    "128": "/icon-128.png"
+  },
+  "developer": {
+    "name": "Daniil Pokrovsky",
+    "url": "http://rainytomato.xyz/app"
+  },
+  "type": "web",
+  "default_locale": "en",
+  "fullscreen": "true"
+}

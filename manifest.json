@@ -1,0 +1,15 @@
+{
+  "name": "Rainy Tomato",
+  "description": "Elegant Pomodoro timer",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "icons": {
+    "128": "/chrome-icon-128.png",
+    "192": "/android-chrome-192x192.png"
+  },
+  "app": {
+    "launch": {
+      "web_url": "http://rainytomato.xyz/app/"
+    }
+  }
+}
