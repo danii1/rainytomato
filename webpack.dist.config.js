@@ -15,7 +15,7 @@ module.exports = {
   entry: ['./src/app.js', 'font-awesome-webpack!./font-awesome.config.js'],
   output: {
     publicPath: 'assets/',
-    path: 'dist/assets/',
+    path: 'dist/app/assets/',
     filename: 'app.js',
     hash: true
   },
