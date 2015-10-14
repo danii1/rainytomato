@@ -92,7 +92,7 @@ h1 {
   }
 
   .hero {
-    height: 190px;
+    height: 300px;
   }
   .hero-heading {
     font-size: 2.6rem;
@@ -101,7 +101,7 @@ h1 {
     padding: 14rem 0 15rem;
   }
   .hero {
-    padding: 16rem 0 14rem;
+    padding: 8rem 0 8rem;
   }
   .section-description {
     max-width: 60%;
@@ -109,12 +109,12 @@ h1 {
     margin-right: auto;
   }
   .screenshot {
-    top: -14rem;
+    top: -6rem;
     right: 5rem;
     max-height: 510px;
   }
   .screenshot + .screenshot {
-    top: -12rem;
+    top: -4rem;
     max-height: 472px;
   }
   .categories {
@@ -129,16 +129,17 @@ h1 {
   }
   .hero {
     padding: 22rem 0;
+    height: 195px;
   }
   .hero-heading {
     font-size: 3.0rem;
   }
   .screenshot {
-    top: -16rem;
+    top: -14rem;
     max-height: 615px;
   }
   .screenshot + .screenshot {
-    top: -14rem;
+    top: -12rem;
     max-height: 570px;
   }
 }
