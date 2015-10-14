@@ -18,8 +18,9 @@
     "launch": "(sleep 1 && npm run browser) & npm run server",
     "clean": "rm -rf ./dist",
     "build": "rm -rf ./dist && ./node_modules/.bin/webpack --config webpack.dist.config.js",
-    "prepare:root": "cp -r ./website/* ./dist/",
-    "deploy": "rm -rf ./dist && npm run build && npm run prepare:root && node ./publish.js"
+    "prepare:website": "cp -r ./website/* ./dist/",
+    "deploy": "rm -rf ./dist && npm run build && npm run prepare:website && node ./publish.js",
+    "prepare:chrome": "npm run clean && mkdir ./dist && zip -j ./dist/tomato_chrome.zip ./website/manifest.json ./website/chrome-icon-128.png ./website/android-chrome-192x192.png"    
   },
   "homepage": "https://github.com/danii1/rainytomato",
   "repository": {
