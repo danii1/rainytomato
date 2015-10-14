@@ -11,16 +11,21 @@ class MusicSidebar extends React.Component {
     };
   }
 
-  handlePlaylistChange(playlist) {
+  _handlePlaylistChange(playlist) {
     this.setState({
       playlist: playlist
     });
   }
 
-  handleResetPlaylist() {
+  _handleResetPlaylist() {
     this.setState({
       playlist: null
     });
+  }
+
+  _handleMenuToggle() {
+    const element = document.getElementById('react');
+    element.className = '';
   }
 
   render() {
@@ -29,7 +34,7 @@ class MusicSidebar extends React.Component {
     let sidebarHeader = null;
     if (playlist) {
       sidebarHeader = <div className="sidebar-header sidebar-playlist-header">
-        <a className="sidebar-header-link" onClick={::this.handleResetPlaylist}>
+        <a className="sidebar-header-link" onClick={::this._handleResetPlaylist}>
           <div className="sidebar-title">
             <i className="fa fa-arrow-left"></i>
             <span>{playlist.name}</span>
@@ -42,8 +47,12 @@ class MusicSidebar extends React.Component {
         playlistElement = <YoutubeWidget playlist={this.state.playlist.url} />;
       }
     } else {
-      sidebarHeader = <div className="sidebar-header">My playlists</div>;
-      playlistElement = <MyPlaylists onPlaylistChoose={::this.handlePlaylistChange}/>;
+      sidebarHeader = <div className="sidebar-header">
+        <a onClick={::this._handleMenuToggle}>
+          My playlists
+        </a>
+      </div>;
+      playlistElement = <MyPlaylists onPlaylistChoose={::this._handlePlaylistChange}/>;
     }
 
     return (

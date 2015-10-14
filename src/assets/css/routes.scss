@@ -1,4 +1,4 @@
-.timer-route {
+.timer-route, .settings-route, .about-route {
   width: 100%;
   height: 100%;
   display: flex;
@@ -7,12 +7,11 @@
 }
 
 .about-route, .settings-route {
-  padding: $default-padding;
+  padding: 0 $default-padding;
 }
 
 .settings-route .tab-box {
   width: 100%;
-  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   max-width: 500px;
   margin: $navbar-height auto auto auto;
@@ -22,7 +21,8 @@
   }
 
   .tab-content {
-    padding: $default-padding;
+    padding: $min-padding $default-padding;
+    height: 12rem;
   }
 
   .tab {
@@ -35,5 +35,35 @@
   .tab.active {
     border-bottom: 2px solid $tomato;
   }
+}
 
+@media (min-height: 480px) {
+  .settings-route .tab-box {
+    margin: auto;
+
+    .tab-content {
+      padding: $default-padding;
+      height: 16rem;
+    }
+  }
+}
+
+.centered-box {
+  margin: auto;
+}
+
+.about-box {
+  text-align: center;
+
+  h5 {
+    font-size: 1.2rem;
+    @media (min-width: 480px) {
+      font-size: 1.7rem;
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    margin: 0.5rem;
+  }
 }

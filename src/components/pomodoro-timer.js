@@ -52,14 +52,16 @@ class PomodoroTimer extends React.Component {
 
 
     return (
-      <div className="pomodoro-timer">
-        <svg viewBox="0 0 100 100">
-          <path d="M 50,50 m 0,-48 a 48,48 0 1 1 0,96 a 48,48 0 1 1 0,-96" shapeRendering="crispEdges" stroke={trailColor} strokeWidth={strokeWidth} fillOpacity="0" style={{ shapeRendering: 'optimizeQuality' }}></path>
-          <path d="M 50,50 m 0,-48 a 48,48 0 1 1 0,96 a 48,48 0 1 1 0,-96" stroke={color} strokeWidth={strokeWidth} fillOpacity="0" strokeDasharray={dashArray} style={{ strokeDashoffset: dashOffset, shapeRendering: 'optimizeQuality' }}></path>
-        </svg>
-        <p className="progressbar-text">
-          {formattedDate}
-        </p>
+      <div className="timer-box">
+        <div className="pomodoro-timer">
+          <svg viewBox="0 0 100 100">
+            <path d="M 50,50 m 0,-48 a 48,48 0 1 1 0,96 a 48,48 0 1 1 0,-96" shapeRendering="crispEdges" stroke={trailColor} strokeWidth={strokeWidth} fillOpacity="0" style={{ shapeRendering: 'optimizeQuality' }}></path>
+            <path d="M 50,50 m 0,-48 a 48,48 0 1 1 0,96 a 48,48 0 1 1 0,-96" stroke={color} strokeWidth={strokeWidth} fillOpacity="0" strokeDasharray={dashArray} style={{ strokeDashoffset: dashOffset, shapeRendering: 'optimizeQuality' }}></path>
+          </svg>
+          <p className="progressbar-text">
+            {formattedDate}
+          </p>
+        </div>
         <a ref="switchTimer" className="timer-control" onClick={() => this.handleClick()}>
           {button}
         </a>

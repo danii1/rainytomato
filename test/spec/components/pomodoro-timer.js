@@ -24,7 +24,7 @@ describe('PomodoroTimer', () => {
 
   it('should render with default className', () => {
     var element = TestUtils.renderIntoDocument(<PomodoroTimer />);
-    expect(React.findDOMNode(element).className).toEqual('pomodoro-timer');
+    expect(React.findDOMNode(element).className).toEqual('timer-box');
   });
 
   it('should display proper timer value', () => {

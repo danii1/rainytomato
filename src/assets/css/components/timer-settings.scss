@@ -1,7 +1,7 @@
 .timer-settings {
   label {
     display: block;
-    margin-bottom: $default-margin * 2;
+    margin-bottom: $default-margin;
   }
 
   .slider-value {
@@ -38,5 +38,14 @@
 
   .noUi-handle::before, .noUi-handle::after {
     content: none;
+  }
+}
+
+@media (min-height: 480px) {
+  .timer-settings {
+    
+    label {
+      margin-bottom: $default-margin * 2;
+    }
   }
 }

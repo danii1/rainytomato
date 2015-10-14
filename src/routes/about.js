@@ -1,13 +1,18 @@
-'use strict';
-
 import React from 'react';
+import hideMenu from '../helpers/route-decorators';
 
-export default React.createClass({
+@hideMenu
+class AboutRoute extends React.Component {
   render() {
     return (
       <div className='about-route'>
-        <h1>About</h1>
+        <div className='about-box centered-box'>
+          <h5>Design and development:</h5>
+          <h4>Daniil Pokrovsky</h4>
+        </div>
       </div>
     );
   }
-});
+}
+
+export default AboutRoute;

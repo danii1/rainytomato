@@ -2,8 +2,10 @@
 
 import React from 'react';
 import PomodoroTimer from 'components/pomodoro-timer';
+import hideMenu from '../helpers/route-decorators';
 
-export default React.createClass({
+@hideMenu
+class TimerRoute extends React.Component {
   render() {
     return (
       <div className='timer-route'>
@@ -11,4 +13,6 @@ export default React.createClass({
       </div>
     );
   }
-});
+}
+
+export default TimerRoute;

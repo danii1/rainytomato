@@ -51,6 +51,10 @@ class PlaylistStore {
 
     if (url.indexOf('soundcloud') > -1) {
       // soundcloud
+
+      // convert mobile url to normal
+      url = url.replace('m.soundcloud.com', 'soundcloud.com');
+
       SoundcloudApi.getPlaylistName(url).then((playlistName) => {
         this._pushPlaylistAsync(playlistName, 'soundcloud', url);
       }, (error) => {

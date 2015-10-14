@@ -28,7 +28,8 @@ class Navbar extends React.Component {
       <nav className="navbar">
         <span className="title">
           <a onClick={::this._handleMenuToggle}>
-            <i className="fa fa-bars"></i> Rainy Tomato
+            <i className="fa fa-bars"></i>
+            <span className="optional-title"> Rainy Tomato</span>
           </a>
         </span>
         <span className="nav-links">

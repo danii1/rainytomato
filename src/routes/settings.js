@@ -1,8 +1,9 @@
-'use strict';
 import React from 'react';
 import { Link, RouteHandler } from 'react-router';
+import hideMenu from '../helpers/route-decorators';
 
-export default React.createClass({
+@hideMenu
+class SettingsRoute extends React.Component {
   render() {
     return (
       <div className="settings-route">
@@ -20,4 +21,6 @@ export default React.createClass({
       </div>
     );
   }
-});
+}
+
+export default SettingsRoute;
