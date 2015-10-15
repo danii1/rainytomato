@@ -24,6 +24,10 @@ class Menu extends React.Component {
             <i className="fa fa-cog"></i>
             <span className="menu-item-text">Settings</span>
           </Link>
+          <Link className="menu-item" to="help">
+            <i className="fa fa-question-circle"></i>
+            <span className="menu-item-text">Help</span>
+          </Link>
           <Link className="menu-item" to="about">
             <i className="fa fa-info-circle"></i>
             <span className="menu-item-text">About</span>

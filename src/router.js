@@ -7,7 +7,7 @@ import Timer from './routes/timer';
 import Settings from './routes/settings';
 import TimerSettings from './routes/settings/timer-settings';
 import UISettings from './routes/settings/ui-settings';
-
+import Help from './routes/help';
 import About from './routes/about';
 
 var routes = (
@@ -17,6 +17,7 @@ var routes = (
       <DefaultRoute handler={TimerSettings} name="timer-settings" />
       <Route handler={UISettings} name="ui" />
     </Route>
+    <Route name="help" handler={Help} />
     <Route name="about" handler={About} />
   </Route>
 );

@@ -89,7 +89,7 @@ class MyPlaylists extends React.Component {
       <div className="my-playlists">
         <div className="playlists-container">{playlists}</div>
         <div className="playlist-add-container">
-          <input placeholder="Paste playlist url" className="playlist-input" ref="customPlaylistInput" type="text" onKeyUp={::this._handleKeyPress} />
+          <input placeholder="Playlist url" className="playlist-input" ref="customPlaylistInput" type="text" onKeyUp={::this._handleKeyPress} />
           <a className="playlist-add" onClick={::this._handleAddPlaylistClick}>Add playlist</a>
         </div>
       </div>

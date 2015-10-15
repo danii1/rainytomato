@@ -1,4 +1,4 @@
-.timer-route, .settings-route, .about-route {
+.timer-route, .settings-route, .help-route, .about-route {
   width: 100%;
   height: 100%;
   display: flex;
@@ -6,7 +6,7 @@
   justify-content: center;
 }
 
-.about-route, .settings-route {
+.about-route, .help-route, .settings-route {
   padding: 0 $default-padding;
 }
 
@@ -52,6 +52,38 @@
   margin: auto;
 }
 
+.help-box, .about-box {
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    margin: 0.5rem 0;
+  }
+}
+
+.help-box {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  max-width: 500px;
+  margin: $navbar-height auto auto auto;
+  padding: $default-padding;
+
+  height: 70%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (min-height: 480px) {
+  .help-route .help-box {
+    margin: auto;
+  }
+}
+
+@media (min-height: 700px) {
+  .help-route .help-box {
+    height: auto;
+  }
+}
+
+
 .about-box {
   text-align: center;
 
@@ -60,10 +92,5 @@
     @media (min-width: 480px) {
       font-size: 1.7rem;
     }
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: normal;
-    margin: 0.5rem;
   }
 }
