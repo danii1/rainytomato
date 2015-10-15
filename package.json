@@ -1,6 +1,6 @@
 {
   "name": "rainy-tomato",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Rainy Tomato - awesome pomodoro timer",
   "private": true,
   "keywords": [
@@ -20,7 +20,7 @@
     "build": "rm -rf ./dist && ./node_modules/.bin/webpack --config webpack.dist.config.js",
     "prepare:website": "cp -r ./website/* ./dist/",
     "deploy": "rm -rf ./dist && npm run build && npm run prepare:website && node ./publish.js",
-    "prepare:chrome": "npm run clean && mkdir ./dist && zip -j ./dist/tomato_chrome.zip ./website/manifest.json ./website/chrome-icon-128.png ./website/android-chrome-192x192.png"    
+    "prepare:chrome": "npm run clean && mkdir ./dist && zip -j ./dist/tomato_chrome.zip ./website/manifest.json ./website/chrome-icon-128.png ./website/android-chrome-192x192.png"
   },
   "homepage": "https://github.com/danii1/rainytomato",
   "repository": {
