@@ -1,7 +1,7 @@
 import React from 'react';
-import hideMenu from '../helpers/route-decorators';
+import routeTransitionActions from '../helpers/route-decorators';
 
-@hideMenu
+@routeTransitionActions
 class AboutRoute extends React.Component {
   render() {
     return (

@@ -2,9 +2,9 @@
 
 import React from 'react';
 import PomodoroTimer from 'components/pomodoro-timer';
-import hideMenu from '../helpers/route-decorators';
+import routeTransitionActions from '../helpers/route-decorators';
 
-@hideMenu
+@routeTransitionActions
 class TimerRoute extends React.Component {
   render() {
     return (

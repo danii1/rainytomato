@@ -2,6 +2,7 @@ import React from 'react';
 import connectStores from 'alt/utils/connectToStores';
 import PlaylistStore from '../stores/playlist-store';
 import PlaylistActions from '../actions/playlist-actions';
+import GoogleAnalytics from '../api/google-analytics';
 
 @connectStores
 class MyPlaylists extends React.Component {
@@ -31,8 +32,11 @@ class MyPlaylists extends React.Component {
       // reset input value after adding it playlists
       const input = React.findDOMNode(this.refs.customPlaylistInput);
       input.value = '';
+
+      GoogleAnalytics.trackEvent('playlist', 'add');
     } else {
       console.log('Only youtube and soundcloud playlists are supported, got ' + value);
+      GoogleAnalytics.trackEvent('playlist', 'add_error', 'invalid_url');
     }
   }
 
@@ -44,6 +48,7 @@ class MyPlaylists extends React.Component {
 
   _handleRemovePlaylistClick(value) {
     PlaylistActions.deletePlaylist(value);
+    GoogleAnalytics.trackEvent('playlist', 'remove');
   }
 
   _pasteLink(url) {

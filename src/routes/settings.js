@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, RouteHandler } from 'react-router';
-import hideMenu from '../helpers/route-decorators';
+import routeTransitionActions from '../helpers/route-decorators';
 
-@hideMenu
+@routeTransitionActions
 class SettingsRoute extends React.Component {
   render() {
     return (

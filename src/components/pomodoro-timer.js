@@ -5,6 +5,7 @@ import React from 'react';
 import connectStores from 'alt/utils/connectToStores';
 import TimerStore from '../stores/timer-store';
 import TimerActions from '../actions/timer-actions';
+import GoogleAnalytics from '../api/google-analytics';
 
 @connectStores
 class PomodoroTimer extends React.Component {
@@ -20,6 +21,9 @@ class PomodoroTimer extends React.Component {
     const currentTask = this.props.tasks[this.props.currentTaskIndex];
     if (currentTask.status === TaskStatus.STOPPED) {
       SoundManager.playStartSound();
+      GoogleAnalytics.trackEvent('timer', 'start', currentTask.type);
+    } else {
+      GoogleAnalytics.trackEvent('timer', 'stop', currentTask.type);
     }
     TimerActions.switchTimer();
   }

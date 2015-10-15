@@ -2,6 +2,7 @@ import React from 'react';
 import YoutubeWidget from './youtube-widget';
 import SoundcloudWidget from './soundcloud-widget';
 import MyPlaylists from './my-playlists';
+import GoogleAnalytics from '../api/google-analytics';
 
 class MusicSidebar extends React.Component {
   constructor(props) {
@@ -15,6 +16,8 @@ class MusicSidebar extends React.Component {
     this.setState({
       playlist: playlist
     });
+
+    GoogleAnalytics.trackEvent('playlist', 'choose');
   }
 
   _handleResetPlaylist() {
