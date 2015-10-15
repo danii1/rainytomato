@@ -17,10 +17,10 @@ class YoutubeWidget extends React.Component {
   constructor(props) {
     super(props);
 
-    let playlistId = YoutubeApi.getPlaylistId(props.playlist);
+    //let playlistId = YoutubeApi.getPlaylistId(props.playlist);
 
     this.state = {
-      playlistId: playlistId,
+      //playlistId: playlistId,
       playlistItems: null,
       playbackIndex: 0,
       playbackStatus: 'paused'

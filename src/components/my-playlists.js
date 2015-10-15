@@ -17,7 +17,8 @@ class MyPlaylists extends React.Component {
   _validateInput(value) {
     if (value.indexOf('soundcloud') > -1) {
       return true;
-    } else if (value.indexOf('youtu') > -1 && value.indexOf('list=') > -1) {
+    } else if (value.indexOf('youtu') > -1 && (value.indexOf('list=') > -1 ||
+      value.indexOf('v=') > -1 )) {
       return true;
     }
     return false;
@@ -78,7 +79,7 @@ class MyPlaylists extends React.Component {
 
     if (playlists.length === 0) {
       playlists = <div className="empty-playlists">
-        You collection is empty, add some playlists from YouTube or SoundCloud, for ex:
+        Your collection is empty, add some playlists from YouTube or SoundCloud, for ex:
         <ul>
           <li>
             <a className="selectable" onClick={() => this._pasteLink('http://www.youtube.com/playlist?list=PL-jIehwqNsThxWrhoWVGDRIFo2EKcV1Nu')}>http://www.youtube.com/playlist?list=PL-jIehwqNsThxWrhoWVGDRIFo2EKcV1Nu</a>

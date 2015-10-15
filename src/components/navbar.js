@@ -3,7 +3,7 @@ import React from 'react';
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
-    //this._handleMusicToggle();
+    this._handleMusicToggle();
   }
 
   _handleMenuToggle() {
