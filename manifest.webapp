@@ -12,6 +12,5 @@
     "url": "http://rainytomato.xyz/app"
   },
   "type": "web",
-  "default_locale": "en",
-  "fullscreen": "false"
+  "default_locale": "en"
 }
