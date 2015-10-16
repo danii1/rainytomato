@@ -13,5 +13,5 @@
   },
   "type": "web",
   "default_locale": "en",
-  "fullscreen": "true"
+  "fullscreen": "false"
 }
