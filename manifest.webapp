@@ -17,5 +17,6 @@
     "desktop-notification": {
       "description": "Required to show timer notifications"
     }
-  }
+  },
+  "messages": [{ "notification": "/app/index.html" }]
 }
